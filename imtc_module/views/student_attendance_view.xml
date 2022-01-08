@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_student_attendance_form_view" model="ir.ui.view">
+        <field name="name">Student Attendance</field>
+        <field name="model">student.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="session_id"/>
+                        <field name="student_id"/>
+                        <field name="is_attendance"/>
+                        <field name="active" invisible="1"/>
+                    </group>                  
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_student_attendance_tree_view" model="ir.ui.view">
+        <field name="name">Student Attendance</field>
+        <field name="model">student.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="session_id" string="Session Name"/>
+                <field name="student_id" string="Student Name"/>
+                <field name="is_attendance" string="Is Attendance"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_student_attendance" model="ir.actions.act_window">
+        <field name="name">Student Attendance</field>
+        <field name="res_model">student.attendance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('active','=',True)]</field>
+    </record>
+</odoo>

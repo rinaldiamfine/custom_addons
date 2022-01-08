@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_admin_student_student,all_group_student_student,model_student_student,,1,1,1,1
+,,,,,,,
+access_admin_student_class,all_group_student_class,model_student_class,,1,1,1,1
+,,,,,,,
+access_admin_student_attendance,all_group_student_attendance,model_student_attendance,,1,1,1,1
+,,,,,,,
+access_admin_student_session,all_group_student_session,model_student_session,,1,1,1,1
+,,,,,,,
+access_admin_assigned_student,all_group_assigned_student,model_assigned_student,,1,1,1,1
+,,,,,,,

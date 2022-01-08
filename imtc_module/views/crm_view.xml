@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="imtc_module_crm_lead_view_form" model="ir.ui.view">
+        <field name="name">imtc.module.crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="id_number"/>
+                <field name="product_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_style_template" name="Trainee Registration">
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <link href="/imtc_module/static/css/bulma.min.css" rel="stylesheet"></link>
+        </head>
+    </template>
+    
+</odoo>

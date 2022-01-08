@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="report_bukti_penerimaan">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="company">
+                    <t t-call="web.external_layout">
+                        <!-- HEADER -->
+                        <div class="row-canvas">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="icon-logo"></div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="details">
+                                            <!-- COMPANY NAME -->
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    No: <span class="report-no"/>
+                                </div>
+                                <div class="col-2">
+                                    <div class="icon-logo">
+                                            <!-- COMPANY IMAGE -->
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="details">
+                                            <!-- COMPANY ADDRESS -->
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-6">
+                                    <div class="report-head">
+                                        <h2>BUKTI PENERIMAAN</h2>
+                                        <div class="header-under-line"/>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col"><div class="checkbox"/> Kas</div>
+                                        <div class="col"><div class="checkbox"/> Bank</div>
+                                        <div class="col"><div class="checkbox"/> Kontak</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                Bayar Kepada: <span class="partner-name"/>
+                            </div>
+
+                            <div class="row">
+                                <table class="table table-sm o_main_table">
+                                    <thead>
+                                        <tr>
+                                            <th name="th_description"><strong>PENJELASAN</strong></th>
+                                            <th name="th_taxes"><strong>JUMLAH</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- DEFAULT CONTENT BODY IS 7 -->
+                                        <tr>
+                                            <td><span class="penjelasan-item"/></td>
+                                            <td><span class="harga-item"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row">
+                                Terbilang : <span class="harga-terbilang"/>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    Batam, <span class="tanggal"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9"></div>
+                                <div class="col-3">
+                                    Di Terima Oleh
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-9">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th><strong>Di Periksa Oleh:</strong></th>
+                                                <th><strong>Di Setujui Oleh:</strong></th>
+                                                <th><strong>Di Bayar Oleh:</strong></th>
+                                                <th><strong>Di Bukukan Oleh:</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="spacer-check"/></td>
+                                                <td><span class="spacer-check"/></td>
+                                                <td><span class="spacer-check"/></td>
+                                                <td><span class="spacer-check"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tgl: </td>
+                                                <td>Tgl: </td>
+                                                <td>Tgl: </td>
+                                                <td>Tgl: </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-3">
+                                    ( <span class="spacer"/> )
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

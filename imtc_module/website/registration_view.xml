@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_trainee_registration_form_template" name="Trainee Registration">
+        <t t-call="website.layout">
+            <div class="hero is-fullheight-with-navbar hero-color-layout">
+            </div>
+        </t>
+    </template>
+</odoo>

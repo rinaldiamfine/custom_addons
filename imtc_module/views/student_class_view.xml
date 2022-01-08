@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_student_class_form_view" model="ir.ui.view">
+        <field name="name">Class</field>
+        <field name="model">student.class</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,start,finish"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <field name="active" invisible="1"/>
+                    </div>
+                    <group>
+                        <field name="product_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Students" name="student_list">
+                            <field name="assigned_student_ids" nolabel="1"/>
+                        </page>
+                        <page string="Session" name="student_session">
+                            <field name="session_ids" nolabel="1"/>
+                        </page>
+                    </notebook>                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_student_class_tree_view" model="ir.ui.view">
+        <field name="name">Class</field>
+        <field name="model">student.class</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Class Name"/>
+                <field name="product_id" string="Training Name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_student_class" model="ir.actions.act_window">
+        <field name="name">Class</field>
+        <field name="res_model">student.class</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('active','=',True)]</field>
+    </record>
+
+    <record id="view_assigned_student_form_view" model="ir.ui.view">
+        <field name="name">Assigned Student</field>
+        <field name="model">assigned.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="student_class_id"/>
+                        <field name="student_id"/>
+                    </group>                 
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_assigned_student_tree_view" model="ir.ui.view">
+        <field name="name">Assigned Student</field>
+        <field name="model">assigned.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_class_id" string="Class Name"/>
+                <field name="student_id" string="Student Name"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

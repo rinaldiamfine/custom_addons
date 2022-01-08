@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_student_session_form_view" model="ir.ui.view">
+        <field name="name">Session</field>
+        <field name="model">student.session</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <field name="active" invisible="1"/>
+                    </div>
+                    <group>
+                        <field name="class_id"/>
+                        <field name="start_date"/>
+                        <field name="finish_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Students" name="student_list">
+                            <field name="student_attendance_ids" nolabel="1"/>
+                        </page>
+                    </notebook>                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_student_session_tree_view" model="ir.ui.view">
+        <field name="name">Session</field>
+        <field name="model">student.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Session Name"/>
+                <field name="class_id" string="Class Name"/>
+                <field name="start_date" string="Start Date"/>
+                <field name="finish_date" string="Finish Date"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_student_session" model="ir.actions.act_window">
+        <field name="name">Session</field>
+        <field name="res_model">student.session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('active','=',True)]</field>
+    </record>
+</odoo>
