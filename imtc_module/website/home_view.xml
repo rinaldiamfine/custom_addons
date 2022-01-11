@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_home_form_template" name="Halaman Utama">
+        <t t-call="website.layout">
+            <t t-call="imtc_module.portal_style_template"/>
+            <t t-set="additional_title" t-value="web_title"></t>
+            <!-- <div id="pageloader" class="pageloader is-active"> -->
+            <t t-set="no_footer">True</t>
+            <div class="hero is-fullheight-with-navbar hero-color-layout pb-4">
+                <div class="hero-body">
+                    <div class="container">
+                        <p class="title p-2" id="page-title">
+                            Home
+                        </p>
+                        <p id="page-subtitle" class="subtitle p-2">
+                            home content ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

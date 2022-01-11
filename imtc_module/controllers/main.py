@@ -9,11 +9,21 @@ import werkzeug
 
 class TraineeRegistration(http.Controller):
 
-    @http.route('/trainee/registration/', type='http', auth='public', website=True)
-    def traineeRegistrationForm(self, **kw):
-        # return "Hello, world"
-        values = {}
-        return request.render("imtc_module.portal_trainee_registration_form_template", values)
+    @http.route('/registration/', type='http', auth='public', website=True)
+    def registrationForm(self, **kw):
+        class_obj = request.env['student.class']
+        country_obj = request.env['res.country']
+        state_obj = request.env['res.country.state']
+        class_ids = class_obj.search([('state','=','open')])
+        values = {
+            'web_title': "Registration - IMTC",
+            'class_ids': class_ids,
+            'step': 1
+        }
+        return request.render("imtc_module.portal_registration_form_template", values)
 
-    # @http.route(['/my/payment/<int:payment_id>'], type='http', auth="public", website=True)
-    # def portal_my_rfq_form(self, payment_id,report_type=None,access_token=None,message=False,download=False,**kw):
+    @http.route('/', http='http', auth='public', website=True)
+    def homeView(self, **kw):
+        print("GET REGISTRATION")
+        values = {}
+        return request.render("imtc_module.portal_home_form_template", values)

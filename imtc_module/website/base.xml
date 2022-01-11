@@ -6,7 +6,134 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <meta http-equiv="x-ua-compatible" content="ie=edge"/>
             <link href="/imtc_module/static/css/bulma.min.css" rel="stylesheet"></link>
+            <link href="/imtc_module/static/css/bulma-divider.min.css" rel="stylesheet"></link>
+            <link href="/imtc_module/static/css/bulma-pageloader.min.css" rel="stylesheet"></link>
+            <link href="/imtc_module/static/css/style.css" rel="stylesheet"></link>
         </head>
     </template>
-    
+
+    <template id="portal_footer_template" name="Portal Footer Template">
+        <div class="hero my-footer">
+            <div class="columns m-0 p-0">
+                <div class="column p-0 has-background-dark">
+                    <div class="column is-10 p-0 is-offset-1 ">
+                        <footer class="footer has-background-dark">
+                            <div class="content">
+                                <p class="has-text-weight-light has-text-white">
+                                    <b>
+                                        <a class="my-link mr-2" href="/">Utama</a> . <a class="my-link mr-2 ml-2" href="#">Program</a> . <a class="my-link mr-2 ml-2" href="#">Berita dan Acara</a> . <a class="my-link mr-2 ml-2" href="#">Tentang Kami</a>
+                                    </b>
+                                </p>
+                                <p class="has-text-weight-light has-text-white">
+                                © 2022 · International Maritime Training Center · All rights reserved
+                                </p>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="portal_navbar_template" name="Portal Navbar" inherit_id="portal.frontend_layout">
+        <xpath expr="//nav[@class='navbar navbar-expand-md navbar-light bg-light']" position="replace">
+            <head>
+                <meta charset="utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+                <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+                <link href="/imtc_module/static/assets/img/favicon-32x32.png" rel="icon"/>
+                <link href="/imtc_module/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+                <link href="/imtc_module/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/vendor/icofont/icofont.min.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/vendor/venobox/venobox.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/vendor/aos/aos.css" rel="stylesheet"/>
+                <link href="/imtc_module/static/assets/css/style.css" rel="stylesheet"/>
+                <t t-call="imtc_module.portal_style_template"/>
+            </head>
+            <nav class="navbar navbar-expand-md navbar-light bg-light" style="background:white !important; padding: 25px 0; box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;">
+                <div class="container">
+                    <a href="/" class="navbar-brand logo">
+                        <img t-att-src="'/logo.png?company=%s' % res_company.id" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name" style="height: 70px;"/>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#top_menu_collapse">
+                        <span class="navbar-toggler-icon"/>
+                    </button>
+                    <div class="collapse navbar-collapse nav-menu" id="top_menu_collapse">
+                        <ul class="nav navbar-nav mr-auto text-right" id="top_menu">
+                            <li class="" id="home">
+                                <a href="/">Home</a>
+                            </li>
+
+                            <li class="drop-down" id="program">
+                                <a href="#">
+                                    Program
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/" style="text-align: left;">Sertifikasi <i class="fa fa-certificate" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/" style="text-align: left;">Jadwal <i class="fa fa-calendar" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="drop-down" id="event">
+                                <a href="#">
+                                    Berita dan Acara
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/" style="text-align: left;">Testimoni <i class="fa fa-signal" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/" style="text-align: left;">Galeri <i class="fa fa-image" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="" id="about">
+                                <a href="/">Tentang Kami</a>
+                            </li>
+
+                            <li id="price">
+                                <a href="/registration">Daftar Program</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li t-if="user_id._is_public()" id="logins">
+                                <a href="/web/login" class="link-navbar-main">Sign In</a>
+                            </li>
+                            <li class="drop-down" t-if="not user_id._is_public()" id="accounts">
+                                <a href="#account">
+                                    <span t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="/my/home" style="text-align: left;">My Account <i class="fa fa-user" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a t-attf-href="/web/session/logout?redirect=/" style="text-align: left;">Logout <i class="fa fa-power-off" style="float:right; padding: 3px;"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+
+        <xpath expr="//footer" position="replace">
+            <link href="/imtc_module/static/css/zapbot_online.css" rel="stylesheet" type="text/css"/>
+            <t t-call="imtc_module.portal_footer_template"/>
+        </xpath>
+    </template>
 </odoo>

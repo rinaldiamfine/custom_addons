@@ -1,8 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="portal_trainee_registration_form_template" name="Trainee Registration">
+    <template id="portal_registration_form_template" name="Trainee Registration">
         <t t-call="website.layout">
-            <div class="hero is-fullheight-with-navbar hero-color-layout">
+            <t t-call="imtc_module.portal_style_template"/>
+            <t t-set="additional_title" t-value="web_title"></t>
+            <div class="hero is-fullheight-with-navbar hero-color-layout pb-4">
+                <div class="hero-body">
+                    <div class="container">
+                        <p class="title p-2" id="page-title">
+                            Information
+                        </p>
+                        <p id="page-subtitle" class="subtitle p-2">
+                            Detail informations.
+                        </p>
+                        <div class="columns is-12">
+                            <div class="column is-4">
+                                <div class="column column-progress active">
+                                    Information
+                                </div>
+                                <div class="column column-progress">
+                                    Programme
+                                </div>
+                                <div class="column column-progress">
+                                    Upload File
+                                </div>
+                            </div>
+                            <div class="column is-8 has-background-white box">
+                                <div class="p-4">
+                                    <input type="hidden" name="step" id="step" t-att-value="step"/>
+                                    <div class="action-step active">
+                                        <form id="info-label-form">
+                                            <div class="is-divider is-link" data-content="Personal Information"></div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="name">Name</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="name" id="name" placeholder="Name ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-user"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="id-no">Identity No.</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="id-no" id="id-no" placeholder="Identity No ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-id-card"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="email">Email</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="email" id="email" placeholder="Email ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="phone">Phone</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="phone" id="phone" placeholder="Phone No ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="is-divider is-link" data-content="Address"></div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="street">Street</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="street" id="street" placeholder="Street ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="street2">Street 2</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="street2" id="street2" placeholder="Street2 ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column is-4">
+                                                    <div class="field">
+                                                        <label class="label" for="street">City</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="city" id="city" placeholder="City ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-4">
+                                                    <div class="field">
+                                                        <label class="label" for="street">State</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="state" id="state" placeholder="State ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-4">
+                                                    <div class="field">
+                                                        <label class="label" for="street">Postal Code</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="zip" id="zip" placeholder="ZIP ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="country">Country</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="country" id="country" placeholder="Country ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="is-divider is-link"></div>
+
+                                    <div class="labeling-progress-group pb-4">
+                                    </div>
+                                    <div class="field is-grouped p-2 column is-6 is-offset-6">
+                                        <button class="button is-default is-fullwidth mr-2 action-registration-back" data-back="/">
+                                            <span class="icon is-small">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </span>
+                                            <span>Back</span>
+                                        </button>
+                                        <button class="button is-link is-fullwidth ml-2 action-registration-next" name="next">
+                                            <span>Next</span>
+                                            <span class="icon is-small">
+                                                <i class="fa fa-chevron-right"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </t>
     </template>

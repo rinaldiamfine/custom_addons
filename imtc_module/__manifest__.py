@@ -34,6 +34,7 @@
         'views/student_session_view.xml',
         'views/menuitem_view.xml',
         'website/base.xml',
+        'website/home_view.xml',
         'website/registration_view.xml',
 
         'report/report_bukti_pembayaran.xml',
