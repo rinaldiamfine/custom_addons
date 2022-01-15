@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Edit.Field.Groups">
+        <div class="_widgetGroups">
+            <label class="lblField">Groups</label>
+            <div class="_wEditCon">
+
+            </div>
+        </div>
+    </t>
+    <t t-name="Edit.Field.Relation">
+        <div class="_widgetRelation">
+            <label class="lblField"><t t-esc="widget.props.label || 'Relation'" /></label>
+            <div class="_wEditCon">
+
+            </div>
+        </div>
+    </t>
+    <t t-name="Edit.Field.Widget">
+        <div class="_widgetOption">
+            <label class="lblField">Widget</label>
+            <select t-att-value="widget.getValue()">
+                <t t-foreach="widget.fieldsWidget" t-as="fieldWidget">
+                    <option t-att-value="fieldWidget.value">
+                        <t t-esc="fieldWidget.label" /> (<t t-esc="fieldWidget.value" />)
+                    </option>
+                </t>
+            </select>
+        </div>
+    </t>
+    <t t-name="Edit.Field.CBCondition">
+        <div class="_cbCondition">
+            <div class="_wCbCon"></div>
+            <div class="_wEditCon">
+            </div>
+        </div>
+    </t>
+    <t t-name="Edit.Field.Selection">
+        <div class="_widgetOption">
+            <label class="lblField"><t t-esc="widget.props.label" /></label>
+            <select t-att-value="widget.getValue()">
+                <t t-foreach="widget.data" t-as="dataItem">
+                    <option t-att-value="dataItem.value">
+                        <t t-esc="dataItem.label" />
+                    </option>
+                </t>
+            </select>
+        </div>
+    </t>
+    <t t-name="Edit.Field.Condition">
+        <div class="_editCondition">
+            <div class="_ecHead">
+            </div>
+            <div class="_ecCon">
+                <div>
+                    <div class="_ecEditUI">
+
+                    </div>
+                    <div class="_ecCodeEdit">
+
+                    </div>
+                </div>
+            </div>
+            <div class="_ecFoot">
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Form.TagForm">
+        <div class="_wForm"></div>
+    </t>
+    <t t-name="Form.TagSheet">
+        <div class="_wSheet">
+            <div class="_sheetCon"></div>
+        </div>
+    </t>
+    <t t-name="Form.TagNotebook">
+        <div class="_wNotebook"></div>
+    </t>
+    <t t-name="Form.TagPage">
+        <div class="_wPage"></div>
+    </t>
+    <t t-name="Form.Label">
+        <label class="lblFor"><t t-esc="label.string" /></label>
+    </t>
+    <t t-name="Form.TagGroup">
+        <div class="_wGroup">
+            <t t-if="node.attrs">
+                <div class="_wgTitle"><t t-esc="node.attrs.string" /></div>
+            </t>
+            <div class="_wgCon"></div>
+        </div>
+    </t>
+    <t t-name="Form.TagHeader">
+        <div class="_wHeader"></div>
+    </t>
+    <t t-name="Form.TagButton">
+        <button t-att-class="button.class" t-att-type="button.type" t-att-name="button.action_confirm">
+            <t t-esc="button.string" />
+        </button>
+    </t>
+
+    <t t-name="Edit.wrapAb">
+        <div class="_wrapAb">
+            <t t-foreach="views" t-as="view">
+                <button class="_subEditList" t-att-viewType="view.type"><i class="fa fa-edit" /><t t-esc="view.label" /></button>
+            </t>
+            <!--<button class="_subEditList" viewType="list">Edit List</button>-->
+            <!--<button class="_subEditForm" viewType="form">Edit Form</button>-->
+        </div>
+    </t>
+
+    <t t-name="Edit.NewChatter">
+         <div class="oe_chatter">
+             <field name="message_follower_ids" widget="mail_followers"/>
+             <field name="activity_ids" widget="mail_activity"/>
+             <field name="message_ids" widget="mail_thread"/>
+         </div>
+    </t>
+</templates>

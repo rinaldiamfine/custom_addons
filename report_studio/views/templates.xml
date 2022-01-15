@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_studio" name="report_studio templates" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/less" href="/report_studio/static/src/scss/edit_view_controller.scss"/>
+                <link rel="stylesheet" type="text/less" href="/report_studio/static/src/scss/basic_field.scss"/>
+                <link rel="stylesheet" type="text/less" href="/report_studio/static/src/scss/report.scss"/>
+
+
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/basic_fields.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/edit_view.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/report/ReportKanBan.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/report/ReportContent.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/report/ReportEdit.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/edit_views/report/ReportProperty.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/abstract_controller.js"></script>
+                <script type="text/javascript" src="/report_studio/static/src/js/views/base.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

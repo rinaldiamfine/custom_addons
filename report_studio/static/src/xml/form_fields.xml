@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="EditView.Input">
+        <div class="_wInput">
+            <div class="lblField">
+                <a><t t-esc="widget.props.label" /></a>
+            </div>
+            <div class="_wIPc">
+                <t t-if="!widget.modifiers.readonly">
+                    <input type="text" t-att-placeholder="widget.props.placeholder" t-att-value="widget.state.value" />
+                </t>
+                <t t-if="widget.modifiers.readonly">
+                    <label><t t-esc="widget.state.value" /> </label>
+                </t>
+            </div>
+
+        </div>
+    </t>
+    <t t-name="EditView.TextArea">
+        <div class="_wInput wFieldText">
+            <div class="lblField">
+                <a><t t-esc="widget.props.label" /></a>
+            </div>
+            <div class="_wIPc">
+                <textarea t-att-placeholder="widget.props.placeholder" t-att-value="widget.state.value" />
+            </div>
+        </div>
+    </t>
+    <t t-name="EditView.Checkbox">
+        <div class="_checkbox">
+            <t t-set="data" t-value="widget.props" />
+            <span class="spCheck"><i class="fa fa-check" /></span>
+            <span class="splBl lblField"><t t-esc="data.label" /></span>
+        </div>
+    </t>
+    <t t-name="EditView.Radio">
+        <div class="_radio">
+            <t t-set="data" t-value="widget.props" />
+            <div class="_wCb" t-att-value="data.value">
+                <div class="_wCcB"></div>
+            </div>
+            <span class="splBl lblField"><t t-esc="data.label" /></span>
+        </div>
+    </t>
+
+    <t t-name="EditView.Radio.Group">
+        <div class="_wGraDio">
+            <div class="_wGrHead lblField"><a><t t-esc="widget.props.label" /></a></div>
+            <div class="_wGrCon">
+                <div class="_wGrCc">
+
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="EditView.Checkbox.Group">
+        <div class="_wGcHecKboX">
+            <div class="_wGrHead lblField"><a><t t-esc="widget.props.label" /></a></div>
+            <div class="_wGrCon">
+                 <div class="_wGrCc">
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

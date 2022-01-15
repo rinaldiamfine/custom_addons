@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="menu.edit">
+        <li class="_liEdit">
+            <a class="_menuEdit">
+                <i class="fa fa-pencil" />Edit
+            </a>
+        </li>
+    </t>
+    <t t-name="menu.ulEdit">
+        <div class="_bgEdit">
+            <div class="wrapMenuEdit">
+                <div class="_head">
+                    <div>
+                        <a>Edit Menu</a>
+                    </div>
+                    <div>
+                        <a class="_aClose"><i class="fa fa-close" /></a>
+                    </div>
+                </div>
+                <div class="_con _divSB"></div>
+                <div class="_bot">
+                    <a class="btn btn-info _btnConfirm">Save</a>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="MenuEdit.li">
+        <li class="_liSub" t-att-view-data="id">
+            <div class="_wInfo">
+                <div class="_wAdd">
+                    <i class="fa fa-plus" />
+                </div>
+                <div class="_wName">
+                    <a><t t-esc="name" /></a>
+                    <input class="form-control" t-att-value="name" />
+                </div>
+                <div class="_wEdit _wIcon">
+                </div>
+                <div class="_wRemove _wIcon">
+                </div>
+            </div>
+        </li>
+    </t>
+    <t t-name="EditView.iconMore">
+        <button class='btn btn-primary fa fa-lg fa-wrench _iMoreView' />
+    </t>
+    <t t-name="EditView.menu">
+        <ul class="_ulView">
+        </ul>
+    </t>
+    <t t-name="EditView.menuItem">
+        <li>
+            <a>
+                <t t-if="icon">
+                    <i t-att-class="'fa fa-lg '+ icon"/>
+                </t>
+                <t t-if="!icon">
+                    <t t-esc="label" />
+                </t>
+            </a>
+        </li>
+    </t>
+    <t t-name="EditView">
+        <div class="wrapEdit">
+            <div class="_wrapEditCon">
+                <div class="_headEdit">
+                    <ul>
+                        <li><a><i class="fa fa-close"></i></a></li>
+                        <li><a><i class="fa fa-minus"></i></a></li>
+                        <li><a><i class="fa fa-expand"></i></a></li>
+                    </ul>
+                </div>
+                <div class="_conEdit">
+                    <div class="_editProperty">
+                        <div class="_CeP">
+                            <div class="_cCeP">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_editView">
+                        <div class="_hEView">
+                            <div class="_wIBi">
+                                <a class="_aUndo aBi"></a>
+                            </div>
+                        </div>
+                        <div class="_cEView">
+                            <div class="_cEvL">
+                                <div class="_wIBi">
+                                    <div>
+                                        <a class="_aUndo fa fa-undo"></a>
+                                    </div>
+                                    <div>
+                                        <a class="fa fa-trash _aRemove"></a>
+                                    </div>
+                                    <div>
+                                        <a class="fa fa-save _aSave"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="_cEvR">
+                                <div class="_cEvRC _divSB">
+                                    <div class="_wSubView _divSB"></div>
+                                    <div class="_wMainView"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="_fEView"></div>
+                    </div>
+                </div>
+                <div class="_conBot">
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="OdoStudioEdit">
+        <div class="wrapEdit">
+            <div class="_wrapEditCon">
+                <div class="_headEdit">
+                    <ul>
+                        <li><a><i class="fa fa-close"></i></a></li>
+                        <li><a><i class="fa fa-minus"></i></a></li>
+                        <li><a><i class="fa fa-expand"></i></a></li>
+                    </ul>
+                </div>
+                <div class="_conEdit">
+
+                </div>
+                <div class="_conBot">
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="OSShowViews">
+        <div class="wrapCreateView">
+            <div class="_wConCV">
+
+            </div>
+        </div>
+    </t>
+
+    <t t-name="ListViewEdit.Content">
+        <div class="editList">
+            <table class="tblList">
+                <tbody>
+                    <tr>
+                        <!--<t t-set="columns" t-value="widget.getColumnsSeq()" />-->
+                        <!--<t t-foreach="columns" t-as="column">-->
+                            <!--<t t-set="name" t-value="column.attrs.name" />-->
+                            <!--<t t-call="ListViewEdit.Content.Col" />-->
+                        <!--</t>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </t>
+    <t t-name="ListViewEdit.Content.Col">
+        <th t-att-name="name" t-att-class="'_colList ' + class || ''">
+            <div class="lblH"><t t-esc="string" /><span class="_sCl fa fa-close"></span></div>
+            <div class="lnRow"><i t-if="isHandle" class="fa fa-arrows" /></div>
+        </th>
+    </t>
+    <t t-name="ListViewEdit.Property">
+        <div class="_wEditProperty">
+            <div class="wLProP _divSB"></div>
+            <div class="_wEPTab"></div>
+        </div>
+    </t>
+
+
+
+    <!--<t t-name="ListViewEdit.Property.TabContent">-->
+        <!--<div class="_wTabContentField">-->
+            <!--<div class="_wTConH">-->
+                <!--<input type="text" class="_ipSearch" placeholder="search field..." />-->
+                <!--<i class="fa fa-search"  />-->
+            <!--</div>-->
+            <!--<div class="_wTConC">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</t>-->
+
+    <t t-name="ListViewEdit.ListProperty">
+        <div class="_wLPro">
+        </div>
+    </t>
+
+    <!--<t t-name="ListViewEdit.Property.Fields">-->
+        <!--<div class="_wFields _divSB">-->
+            <!--<t t-foreach="viewFields" t-as="field">-->
+                <!--<div class="lblH fIn" t-att-name="field.name">-->
+                    <!--<t t-esc="field.string" />-->
+                <!--</div>-->
+            <!--</t>-->
+        <!--</div>-->
+    <!--</t>-->
+     <t t-name="ListViewEdit.Property.Property">
+        <div class="_wFields _divSB">
+
+        </div>
+    </t>
+
+    <t t-name="EditView.ListViewEdit">
+        <div class="editList">
+        </div>
+    </t>
+    <t t-name="EditView.FormViewEdit">
+        <div>
+            <h1>FormViewEdit</h1>
+        </div>
+    </t>
+
+    <t t-name="FormViewEdit.Content">
+        <div>
+            <div class="_wFormCon o_form_view">
+
+            </div>
+        </div>
+    </t>
+
+    <t t-name="GraphViewEdit.Content">
+        <div class="_wGraphCon">
+        </div>
+    </t>
+
+    <t t-name="CalendarViewEdit.Content">
+        <div class="_wCalendarCon">
+        </div>
+    </t>
+    <t t-name="KanBanViewEdit.Content">
+        <div class="_wKanBanCon">
+        </div>
+    </t>
+    <t t-name="KanBanViewEdit.Tab.Theme">
+        <div class="_wKanBanTheme">
+            <t t-foreach="Object.values(templates)" t-as="template">
+                <div class="templateItem" t-att-template="template.name">
+                    <img t-att-src="template.img" />
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="EditReport.KanBan">
+        <div class="_wReportKanBan">
+            <div class="wCreateReport">
+                <button type="button" class="btn btn-primary btnCreate">
+                    Create
+                </button>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="PivotViewEdit.Content">
+        <div class="_wPivotCon">
+        </div>
+    </t>
+
+    <t t-name="CalendarViewEdit.Property">
+        <div class="_wEditProperty">
+            <div class="wLProP _divSB"></div>
+            <div class="_wEPTab"></div>
+        </div>
+    </t>
+
+    <t t-name="FormViewEdit.Property">
+        <div class="_wEditProperty">
+            <div class="wLProP _divSB"></div>
+            <div class="_wEPTab"></div>
+        </div>
+    </t>
+
+    <t t-name="FormViewEdit.TabFieldsContent">
+        <div>
+            <h3>Field Content</h3>
+        </div>
+    </t>
+
+    <t t-name="FormViewEdit.TabPropFormContent">
+        <div>
+            <h3>Property Form Content</h3>
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.TabComponent.Com">
+        <div t-att-class="class">
+            <div class="_cTagHead" >
+                <h4><t t-esc="label" /></h4>
+            </div>
+            <div class="_cTagCon _wSortable">
+                <t t-foreach="Object.values(child)" t-as="component">
+                    <div class="_wComItem" t-att-type="type" t-att-name="component.name">
+                        <a t-att-type="type" t-att-name="component.name"><i t-if="component.icon" t-att-class="'fa '+component.icon" /><t t-esc="component.label"/></a>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="FormViewEdit.TabComponentContent">
+        <div class="wComponent">
+            <div class="_wComCon">
+                <!--<div class="_wComTag">-->
+                    <!--<div class="_cTagHead" >-->
+                        <!--<h4>Tags</h4>-->
+                    <!--</div>-->
+                    <!--<div class="_cTagCon _wSortable">-->
+                        <!--<t t-foreach="Object.values(components.component)" t-as="component">-->
+                            <!--<div class="_wComItem" type="component" t-att-name="component.name">-->
+                                <!--<a><t t-esc="component.label"/></a>-->
+                            <!--</div>-->
+                        <!--</t>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="_wComField">-->
+                    <!--<div class="_cTagHead" >-->
+                        <!--<h4>Fields</h4>-->
+                    <!--</div>-->
+                    <!--<div class="_cTagCon _wSortable">-->
+                        <!--<t t-foreach="Object.values(components.fields)" t-as="field">-->
+                            <!--<div class="_wComItem" type="fieldNew" t-att-name="field.name">-->
+                                <!--<a><i t-att-class="'fa '+field.icon" /><t t-esc="field.label"/></a>-->
+                            <!--</div>-->
+                        <!--</t>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+
+        </div>
+    </t>
+
+
+    <t t-name="EditView.KanBanViewEdit">
+        <div>
+            <h1>KanBanViewEdit</h1>
+        </div>
+    </t>
+
+
+
+    <!--Field Basic-->
+
+
+
+    <t t-name="ViewEdit.Tab">
+        <div class="wTab">
+            <div class="_tabHead">
+                <t t-foreach="Object.values(widget.tabs)" t-as="tab">
+                    <div t-att-tab-name="tab.name" t-att-node-id="(tab.fieldNode || {}).nodeId">
+                        <a><i t-att-class="'fa '+ tab.icon" /><t t-esc="tab.label" /></a>
+                    </div>
+                </t>
+            </div>
+            <div class="_tabContent"></div>
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.Tab.newTab">
+        <div class="_wNewTab">
+            <div class="_wGroup _needFl">
+                <div class="_wGroup"></div>
+                <div class="_wGroup"></div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.TabContentFields">
+        <div class="_wTabContentField">
+            <div class="_wTConH">
+                <input type="text" class="_ipSearch" placeholder="search field..." />
+                <i class="fa fa-search"  />
+            </div>
+            <div class="_wTConC _divSB">
+                <t t-call="ViewEdit.List.TCF.Fields" />
+            </div>
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.List.TCF.Fields">
+        <div class="_wFields _divSB">
+            <t t-foreach="viewFields" t-as="field">
+                <div class="lblH fIn" type="field" t-att-name="field.name">
+                    <t t-esc="field.string" />
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.TabContentProperty">
+        <div class="_wCTabProp _divSB">
+        </div>
+    </t>
+
+    <t t-name="ViewEdit.ColorLine">
+        <div class="_wLineColor">
+            <div><a><t t-esc="widget.props.label" />:</a></div>
+            <div>
+                <t t-set="value" t-value="widget.state.value" />
+                <t t-foreach="Object.keys(widget.viewInfo)" t-as="colorKey">
+                    <t t-set="color" t-value="widget.viewInfo[colorKey]" />
+                    <div class="_lColor" t-att-name="colorKey">
+                        <input t-att-placeholder="color.placeholder" t-att-value="value[colorKey] || ''" t-att-name="colorKey" type="text" />
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Edit.MenuTop">
+        <ul class="edit_menu_top">
+            <li><a>close</a></li>
+        </ul>
+    </t>
+
+    <t t-name="ViewEdit.TreeDefault">
+        <tree>
+        </tree>
+    </t>
+    <t t-name="ViewEdit.FormDefault">
+        <form>
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="id" default_focus="1" placeholder="Id" />
+                    </h1>
+                </div>
+            </sheet>
+        </form>
+    </t>
+    <t t-name="ViewEdit.CalendarDefault">
+        <calendar t-att-date_start="name">
+        </calendar>
+    </t>
+    <t t-name="ViewEdit.GraphDefault">
+        <graph></graph>
+    </t>
+    <t t-name="ViewEdit.PivotDefault">
+        <pivot></pivot>
+    </t>
+    <t t-name="ViewEdit.GanttDefault">
+        <gantt t-att-date_start="name">
+        </gantt>
+    </t>
+    <t t-name="ViewEdit.ListDefault">
+        <tree>
+            <field name="id" />
+        </tree>
+    </t>
+    <t t-name="ViewEdit.ReportFrame">
+        <iframe class="o_report_iframe" t-att-src="report"></iframe>
+    </t>
+    <t t-name="EditReport.ReportView">
+        <div class="_wReportView">
+            <button class="btn btn-primary btnPrint">Print</button>
+            <div class="_wContent"></div>
+            <div class="_wFrame"></div>
+        </div>
+    </t>
+    <t t-name="EditReport.NodeProperty">
+        <div class="_wReportNodePp">
+            <div></div>
+            <div>
+                <div class="_rowPp lR0">
+                    <div>
+                    </div>
+                </div>
+                <div class="_rowPp lR1">
+                    <div>
+                        <label>Margins</label>
+                        <div class="_wAkj">
+                            <input placeholder="top" data="margin-top" type="text" t-att-value="widget.getPadMar('margin-top')" />
+                            <input placeholder="right" data="margin-right" type="text" t-att-value="widget.getPadMar('margin-right')" />
+                            <input placeholder="bottom" data="margin-bottom" type="text" t-att-value="widget.getPadMar('margin-bottom')" />
+                            <input placeholder="left" data="margin-left" type="text" t-att-value="widget.getPadMar('margin-left')" />
+                            <span>px</span>
+                         </div>
+                    </div>
+                    <div>
+                        <label>Width</label>
+                        <div class="_wAkj">
+                            <input data="width" type="text" t-att-value="widget.state.data.width" />
+                            <span>px</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="_rowPp lR1">
+                    <div>
+                        <label>Padding</label>
+                        <div class="_wAkj">
+                            <input placeholder="top" data="padding-top" type="text" t-att-value="widget.getPadMar('padding-top')" />
+                            <input placeholder="right" data="padding-right" type="text" t-att-value="widget.getPadMar('padding-right')" />
+                            <input placeholder="bottom" data="padding-bottom" type="text" t-att-value="widget.getPadMar('padding-bottom')" />
+                            <input placeholder="left" data="padding-left" type="text" t-att-value="widget.getPadMar('padding-left')" />
+                            <span>px</span>
+                         </div>
+                    </div>
+                </div>
+                <div class="_rowPp lR2">
+                    <div>
+                        <label>Text decoration</label>
+                        <a type="text-decoration" data="bold" class="fontWeight"><i class="fa fa-bold" /></a>
+                        <a type="text-decoration" data="italic" class="fontStyle"><i class="fa fa-italic" /></a>
+                        <a type="text-decoration" data="underline" class="textUnderline"><i class="fa fa-underline" /></a>
+                    </div>
+                    <div>
+                        <label>Alignment</label>
+                        <a type="text-align" data="left" class="textAlign-left"><i class="fa fa-align-left" /></a>
+                        <a type="text-align" data="center" class="textAlign-center"><i class="fa fa-align-center" /></a>
+                        <a type="text-align" data="right" class="textAlign-right"><i class="fa fa-align-right" /></a>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="_rowPp lR3">
+                    <div>
+                        <label>Colors</label>
+                        <a type="color">
+                            <i class="fa fa-font" />
+                        </a>
+                        <a type="background">
+                            <i class="fa fa-paint-brush" />
+                        </a>
+                    </div>
+                </div>
+                <div class="_rowPp lR4">
+                    <div>
+                        <label>Class</label>
+                        <input type="text" t-att-value="widget.state.data.classes" />
+                    </div>
+                    <div>
+                        <label>Visible if</label>
+                        <input type="text" t-att-value="widget.state.data.visibleIf" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="EditReport.NodeProperty.Widget">
+        <div class="edRpWidget">
+            <div class="_eRWidCon"></div>
+            <div class="_eROpCon"></div>
+        </div>
+    </t>
+    <t t-name="EditReport.ModelFieldSelector">
+        <div class="wMFS">
+            <div class="mfsH">
+                <label class="lblField"><t t-esc="widget.props.label" /></label>
+            </div>
+            <div class="mfsC">
+            </div>
+        </div>
+    </t>
+    <t t-name="EditReport.Widget.Array.option">
+        <div class="opItem"><span><t t-esc="label" /></span></div>
+    </t>
+    <t t-name="EditReport.Widget.Array.value">
+        <span class="wVi"><t t-esc="label" /><i class="fa fa-close removeVal" /></span>
+    </t>
+    <t t-name="EditReport.Widget.Array">
+        <div class="erWArray">
+            <div class="erWH">
+                <label class="lblField"><t t-esc="widget.props.label" /></label>
+            </div>
+            <div class="erWC">
+                <div class="wSl">
+                    <div class="wV"></div>
+                </div>
+                <div class="wOp">
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="ViewEdit.ViewMore">
+        <div class="_wViewMore">
+            <t t-if="!widget.newField">
+                <button>More Property</button>
+            </t>
+        </div>
+    </t>
+    <t t-name="ChooseField.Sub">
+        <div class="slF">
+            <div class="slFCon"></div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.ChooseField">
+        <div class="fieldSelect">
+            <div class="fsCon">
+                <div class="slHead">
+                    <h3>Field Properties</h3>
+                </div>
+                <div class="slCon">
+                    <t t-if="!widget.props.hideName">
+                        <div class="fStr">
+                            <div><span>Column Name</span></div>
+                            <div><input /></div>
+                        </div>
+                    </t>
+                    <!--<t t-if="!widget.props.hideField">-->
+                        <!--<div class="slF">-->
+                            <!--<div><span>Column Field</span></div>-->
+                            <!--<div class="slFCon"></div>-->
+                        <!--</div>-->
+                    <!--</t>-->
+                </div>
+                <div class="slFoot">
+                    <button class="btn btn-primary btnSave">Confirm</button>
+                    <button class="btn btn-secondary btnCancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="MenuEdit.ChangeMenu">
+        <div class="wCMdiALog">
+            <div class="wCMdLCon">
+                <div class="cmHd">
+                    <h4><t t-esc="widget.props.title || 'Create new menu !'" /></h4>
+                    <span class="fa fa-close closeCT" />
+                </div>
+                <div class="cmCt">
+                    <t t-if="widget.state.type == 'oldModel'">
+                        <span class="sModel" type="newModel">New model <i class="fa fa-arrow-right"></i></span>
+                    </t>
+                    <t t-if="widget.state.type == 'newModel'">
+                        <span class="sModel" type="oldModel"><i class="fa fa-arrow-left"></i> Old model</span>
+                    </t>
+                    <div class="cmWF">
+
+                    </div>
+                </div>
+                <div class="cmFt">
+                    <button class="btn btn-primary btnSave">Save</button>
+                    <button class="btn btn-default btnCancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

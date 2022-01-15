@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="EditReport.TemType">
+        <div class="itemRT">
+            <h4><t t-esc="label" /></h4>
+            <p><t t-esc="description" /></p>
+        </div>
+    </t>
+    <t t-name="EditReport.ChooseTemplate">
+        <div class="wrCH">
+            <div class="wChoose">
+                <div class="wHC">
+                    <h4>Please choose report template !</h4>
+                    <span class="fa fa-close closeCT" />
+                </div>
+                <div class="wCC">
+                </div>
+                <div class="wFC"></div>
+            </div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.TwoColumns">
+        <div class="row">
+            <div class="col-6"><span>New Column</span></div>
+            <div class="col-6"><span>New Column</span></div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.ThreeColumns">
+        <div class="row">
+            <div class="col-4"><span>New Column</span></div>
+            <div class="col-4"><span>New Column</span></div>
+            <div class="col-4"><span>New Column</span></div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.TextBlock">
+        <div class="row">
+            <div class="col">
+                <span>New Text Block</span>
+            </div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.FieldBlock">
+        <div class="row">
+            <div class="col">
+                <span></span>
+            </div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.TitleBlock">
+        <h2 class="mt16"><span>New Title Block</span></h2>
+    </t>
+    <t t-name="ReportEdit.Inline.Text">
+        <span>Text Inline</span>
+    </t>
+    <t t-name="ReportEdit.Inline.Field">
+    </t>
+    <t t-name="ReportEdit.Block.FieldLabel">
+        <div>
+            <strong></strong>
+            <span></span>
+        </div>
+    </t>
+    <t t-name="ReportEdit.Block.VirtualFieldLabel">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.Table">
+        <table class="table table-sm o_main_table">
+            <thead>
+                <tr>
+                    <th name="th_name">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-as="line">
+                    <tr>
+                        <td name="td_name"><span t-field="line.name" /></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+    </t>
+    <t t-name="ReportEdit.VirtualSubTotal">
+        <div class="row">
+            <div class="col-md-5 mr-auto"></div>
+            <div class="col-md-5 ml-auto"></div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.SubTotal">
+        <div class="clearfix">
+            <div id="total" class="row" name="total">
+                <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                    <table class="table table-sm o_main_table">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="ReportEdit.Template.Internal">
+        <template id="report_studio_id_123">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </t>
+    <t t-name="ReportEdit.Template.External">
+        <template id="report_studio_id_145">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"></div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </t>
+    <t t-name="ReportEdit.Template.Blank">
+        <template id="report_studio_id_1454">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </t>
+    <t t-name="Report.NodeTemplate.Item">
+        <div class="tplItem" t-att-path="path">
+            <div class="itHead">
+                <span class="sI"/>
+                <h5><i t-att-class="icon" /><t t-esc="tagName" /></h5>
+                <span class="sII" />
+            </div>
+            <div class="itProps"></div>
+        </div>
+    </t>
+    <t t-name="EditReport.ParentElNode">
+        <div>
+
+        </div>
+    </t>
+</templates>
