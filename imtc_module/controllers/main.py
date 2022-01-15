@@ -9,14 +9,14 @@ import werkzeug
 
 class TraineeRegistration(http.Controller):
 
-    @http.route('/registration/', type='http', auth='public', website=True)
+    @http.route('/registration', type='http', auth='public', website=True)
     def registrationForm(self, **kw):
         class_obj = request.env['student.class']
         country_obj = request.env['res.country']
         state_obj = request.env['res.country.state']
         class_ids = class_obj.search([('state','=','open')])
         values = {
-            'web_title': "Registration - IMTC",
+            'web_title': "Registration",
             'class_ids': class_ids,
             'step': 1
         }
@@ -27,3 +27,8 @@ class TraineeRegistration(http.Controller):
         print("GET REGISTRATION")
         values = {}
         return request.render("imtc_module.portal_home_form_template", values)
+
+    @http.route('/about', http='http', auth='public', website=True)
+    def aboutView(self, **kw):
+        values = {}
+        return request.render("imtc_module.portal_about_form_template", values)

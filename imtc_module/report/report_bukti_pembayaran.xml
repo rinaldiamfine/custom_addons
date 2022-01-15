@@ -1,135 +1,301 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-        <report
-            id="report_account_move_bukti_pembayaran"
-            model="account.move"
-            string="Bukti Pembayaran"
-            name="imtc_module.report_bukti_pembayaran"
-            file="imtc_module.report_bukti_pembayaran"
-            report_type="qweb-pdf"/>
+        <report id="report_account_move_bukti_pembayaran" model="account.move" string="Bukti Pembayaran" name="imtc_module.report_bukti_pembayaran" file="imtc_module.report_bukti_pembayaran" report_type="qweb-pdf"/>
 
         <template id="report_bukti_pembayaran">
             <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="company">
-                    <t t-call="web.external_layout">
-                        <!-- HEADER -->
-                        <div class="row-canvas">
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="icon-logo"></div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="details">
-                                            <!-- COMPANY NAME -->
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    No: <span class="report-no"/>
-                                </div>
-                                <div class="col-2">
-                                    <div class="icon-logo">
-                                            <!-- COMPANY IMAGE -->
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="details">
-                                            <!-- COMPANY ADDRESS -->
-                                    </div>
-                                </div>
-                                <div class="col-2"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-3">
-                                </div>
-                                <div class="col-6">
-                                    <div class="report-head">
-                                        <h2>BUKTI PENERIMAAN</h2>
-                                        <div class="header-under-line"/>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="col"><div class="checkbox"/> Kas</div>
-                                        <div class="col"><div class="checkbox"/> Bank</div>
-                                        <div class="col"><div class="checkbox"/> Kontak</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                Bayar Kepada: <span class="partner-name"/>
-                            </div>
-
-                            <div class="row">
-                                <table class="table table-sm o_main_table">
-                                    <thead>
-                                        <tr>
-                                            <th name="th_description"><strong>PENJELASAN</strong></th>
-                                            <th name="th_taxes"><strong>JUMLAH</strong></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- DEFAULT CONTENT BODY IS 7 -->
-                                        <tr>
-                                            <td><span class="penjelasan-item"/></td>
-                                            <td><span class="harga-item"/></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="row">
-                                Terbilang : <span class="harga-terbilang"/>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-9"></div>
-                                <div class="col-3">
-                                    Batam, <span class="tanggal"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-9"></div>
-                                <div class="col-3">
-                                    Di Terima Oleh
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-9">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th><strong>Di Periksa Oleh:</strong></th>
-                                                <th><strong>Di Setujui Oleh:</strong></th>
-                                                <th><strong>Di Bayar Oleh:</strong></th>
-                                                <th><strong>Di Bukukan Oleh:</strong></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span class="spacer-check"/></td>
-                                                <td><span class="spacer-check"/></td>
-                                                <td><span class="spacer-check"/></td>
-                                                <td><span class="spacer-check"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tgl: </td>
-                                                <td>Tgl: </td>
-                                                <td>Tgl: </td>
-                                                <td>Tgl: </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-3">
-                                    ( <span class="spacer"/> )
-                                </div>
-                            </div>
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <p style="page-break-after:always;"></p>
+                        <style>
+                            .font-small {
+                                font-size: 12px;
+                            }
+                            .table-header-side {
+                                width:20%;
+                            }
+                            .table-header-center {
+                                width:60%;
+                            }
+                            .table-header-center-side {
+                                width: 80%;
+                            }
+                            .table-border {
+                                border: 1px solid black;
+                                padding: 5px;
+                                border-collapse: collapse;
+                            }
+                            .has-full-border-solid {
+                                border: 3px solid black;
+                                padding: 1rem;
+                            }
+                            .has-border {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                            }
+                            .has-border-solid {
+                                border-bottom: 1px solid black;
+                            }
+                            .has-border-dotted {
+                                border-bottom: 1px dotted black;
+                            }
+                            .valign-middle {
+                                vertical-align: middle;
+                            }
+                            .valign-top {
+                                vertical-align: top;
+                            }
+                            .checkbox {
+                                border: 2px solid black;
+                                height: 25px;
+                                width: 25px;
+                            }
+                            .container-content {
+                                display: table;
+                            }
+                            .row {
+                                display: table-row;
+                                padding:5px;
+                            }
+                            .cell {
+                                display: table-cell;
+                            }
+                            .font-bold {
+                                font-weight: bold;
+                            }
+                            .padding-5 {
+                                padding:5px;
+                            }
+                            .plpr-5 {
+                                padding-left: 5px;
+                                padding-right: 5px;
+                            }
+                            .table-footer-space {
+                                width:10%;
+                            }
+                            .table-footer {
+                                width:17.5%;
+                            }
+                            .empty-space {
+                                height: 100px;
+                            }
+                            .space-full {
+                                padding-left: 50px;
+                                padding-right: 50px;
+                            }
+                        </style>
+                        
+                        <div class="has-full-border-solid">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="table-header-side" align="center">
+                                        <img t-attf-src="data:image/*;base64,{{company_id.logo}}" t-att-alt="company_id.name" style="width:70%;"/>
+                                    </td>
+                                    <td class="table-header-center valign-top font-small">
+                                        <strong>
+                                            <span t-esc="company_id.name"/>
+                                        </strong>
+                                        <br/>
+                                        <span t-esc="company_id.street"/>
+                                        <span t-esc="company_id.street2"/>
+                                        <span t-esc="company_id.city"/>
+                                        <br/>
+                                        <span>No Tlp : <t t-esc="company_id.phone"/>
+                                        </span>
+                                    </td>
+                                    <td class="table-header-side valign-top font-small">
+                                        <span class="has-border-dotted"><strong>No:</strong> <t class="report-no" t-esc="name"/></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-header-side">
+                                    </td>
+                                    <td class="table-header-center" align="center">
+                                        <h2><span class="has-border-solid">&#160;BUKTI PEMBAYARAN&#160;</span></h2>
+                                    </td>
+                                    <td class="table-header-side font-small valign-middle container-content">
+                                        <div class="row valign-middle">
+                                            <div class="cell padding-5">
+                                                <div class="checkbox"/>
+                                            </div>
+                                            <div class="cell valign-middle">
+                                                <span class="font-bold">Kas</span>
+                                            </div>
+                                        </div>
+                                        <div class="row valign-middle">
+                                            <div class="cell padding-5">
+                                                <div class="checkbox"/>
+                                            </div>
+                                            <div class="cell valign-middle">
+                                                <span class="font-bold">Bank</span>
+                                            </div>
+                                        </div>
+                                        <div class="row valign-middle">
+                                            <div class="cell padding-5">
+                                                <div class="checkbox"/>
+                                            </div>
+                                            <div class="cell valign-middle">
+                                                <span class="font-bold">Kontak</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="padding-5">
+                                        <strong class="font-small">Bayar Kepada: </strong>
+                                        <span class="font-small has-border-dotted plpr-5" t-esc="doc.partner_id.name"/>
+                                    </td>
+                                    <td class="table-header-side valign-middle">
+                                    
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="width:100%;" class="table-border">
+                                <tr>
+                                    <td class="table-header-full table-border" align="center">
+                                        <strong class="font-small">PENJELASAN</strong>
+                                    </td>
+                                    <td class="table-header-side table-border" align="center">
+                                        <strong class="font-small">JUMLAH</strong>
+                                    </td>
+                                </tr>
+                                <t t-set="deafult_col_table" t-value="7-int(len(doc.invoice_line_ids))"/>
+                                <tr t-foreach="doc.invoice_line_ids" t-as="line_id">
+                                    <td class="table-header-full table-border" align="left">
+                                        <span class="font-small"><t t-esc="line_id.product_id.name"/></span>
+                                    </td>
+                                    <td class="table-header-side table-border" align="right">
+                                        <span class="font-small" t-esc="company_id.currency_id.symbol"/>
+                                        <span class="font-small" t-esc="'%.2f'%line_id.price_subtotal"/>
+                                    </td>
+                                </tr>
+                                <tr t-foreach="range(deafult_col_table)" t-as="default">
+                                    <td class="table-header-full table-border">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side table-border">
+                                        <span>&#160;</span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="table-header-full table-border" align="right">
+                                        <strong class="font-small">TOTAL</strong>
+                                    </td>
+                                    <td class="table-header-side table-border" align="right">
+                                        <strong class="font-small" t-esc="company_id.currency_id.symbol"/>
+                                        <strong class="font-small" t-esc="'%.2f'%doc.amount_total"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td colspan="5" class="padding-5">
+                                        <strong class="font-small">Terbilang: </strong>
+                                        <span class="font-small has-border-dotted plpr-5" t-esc="word_amount"/>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-footer padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span class="font-small">Batam, <span t-field="doc.invoice_date" t-field-options='{"format": "dd/MM/yyyy"}'/></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <strong class="font-small">Diterima Oleh</strong>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="width:100%; border-collapse: collapse;">
+                                <tr>
+                                    <td class="table-footer padding-5 has-border" align="left">
+                                        <strong class="font-small">Di Periksa Oleh:</strong>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <strong class="font-small">Di Setujui Oleh:</strong>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <strong class="font-small">Di Bayar Oleh:</strong>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <strong class="font-small">Di Bukukan Oleh:</strong>
+                                    </td>
+                                    <td class="table-footer-space padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-footer padding-5 has-border" align="left">
+                                        <div class="empty-space"/>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <div class="empty-space"/>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <div class="empty-space"/>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <div class="empty-space"/>
+                                    </td>
+                                    <td class="table-footer-space padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5">
+                                        <div class="empty-space"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-footer padding-5 has-border" align="left">
+                                        <span class="font-small">Tgl: </span>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <span class="font-small">Tgl: </span>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <span class="font-small">Tgl: </span>
+                                    </td>
+                                    <td class="table-footer padding-5 has-border">
+                                        <span class="font-small">Tgl: </span>
+                                    </td>
+                                    <td class="table-footer-space padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                    <td class="table-header-side padding-5" align="center">
+                                        (<span class="space-full">&#160;</span>)
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                    </t>
+                    </div>
                 </t>
             </t>
         </template>

@@ -9,6 +9,8 @@
             <link href="/imtc_module/static/css/bulma-divider.min.css" rel="stylesheet"></link>
             <link href="/imtc_module/static/css/bulma-pageloader.min.css" rel="stylesheet"></link>
             <link href="/imtc_module/static/css/style.css" rel="stylesheet"></link>
+            <script type="text/javascript" src="/imtc_module/static/js/jquery.js"></script>
+            <script type="text/javascript" src="/imtc_module/static/js/script.js"></script>
         </head>
     </template>
 
@@ -21,14 +23,20 @@
                             <div class="content">
                                 <p class="has-text-weight-light has-text-white">
                                     <b>
-                                        <a class="my-link mr-2" href="/">Utama</a> . <a class="my-link mr-2 ml-2" href="#">Program</a> . <a class="my-link mr-2 ml-2" href="#">Berita dan Acara</a> . <a class="my-link mr-2 ml-2" href="#">Tentang Kami</a>
+                                        <a class="my-link mr-2" href="/">Utama</a> . <a class="my-link mr-2 ml-2" href="#">Program</a> . <a class="my-link mr-2 ml-2" href="#">Berita dan Acara</a> . <a class="my-link mr-2 ml-2" href="/about">Tentang Kami</a>
                                     </b>
-                                </p>
-                                <p class="has-text-weight-light has-text-white">
-                                © 2022 · International Maritime Training Center · All rights reserved
                                 </p>
                             </div>
                         </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="columns m-0 p-0 pt-4 pb-4 has-background-danger-brand">
+                <div class="column p-0">
+                    <div class="column is-10 p-0 is-offset-1 ">
+                        <p class="has-text-weight-light has-text-white">
+                            Copyright © 2022 · International Maritime Training Center · All rights reserved
+                        </p>
                     </div>
                 </div>
             </div>
@@ -41,8 +49,6 @@
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
                 <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-                <link href="/imtc_module/static/assets/img/favicon-32x32.png" rel="icon"/>
-                <link href="/imtc_module/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
                 <link href="/imtc_module/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
                 <link href="/imtc_module/static/assets/vendor/icofont/icofont.min.css" rel="stylesheet"/>
                 <link href="/imtc_module/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
@@ -99,10 +105,10 @@
                             </li>
 
                             <li class="" id="about">
-                                <a href="/">Tentang Kami</a>
+                                <a href="/about">Tentang Kami</a>
                             </li>
 
-                            <li id="price">
+                            <li id="registration">
                                 <a href="/registration">Daftar Program</a>
                             </li>
                         </ul>

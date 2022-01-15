@@ -11,9 +11,9 @@ tens = {
 illions = {
     1: 'ribu', 2: 'juta', 3: 'miliar', 4: 'triliun'}
 
-class BuktiPembayaran(models.AbstractModel):
-    _name = 'report.imtc_module.report_bukti_pembayaran'
-    _description = 'Bukti Pembayaran'
+class BuktiPenerimaan(models.AbstractModel):
+    _name = 'report.imtc_module.report_bukti_penerimaan'
+    _description = 'Bukti Penerimaan'
 
     @api.model
     def _get_report_values(self, docids, data=None):

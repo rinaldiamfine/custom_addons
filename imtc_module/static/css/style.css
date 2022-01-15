@@ -41,7 +41,7 @@
 
 .dashboard-feature.is-active > .dashboard-icon > .icon-active {
     display:block !important;
-    color: #106EEA !important;
+    color: #ff3860 !important;
 }
 .dashboard-feature.is-active > article > .dashboard-image {
     display: none;
@@ -55,25 +55,25 @@
 .dashboard-feature.is-active > article > .subtitle {
     font-weight: bold !important;
     font-size: large !important;
-    color: #106EEA !important;
+    color: #ff3860 !important;
 }
 .dashboard-feature {
     cursor: pointer;
 }
 .dashboard-feature.is-active > article {
-    border:1px solid #106EEA !important;
+    border:1px solid #ff3860 !important;
 }
 
 .download-feature.is-active > article > .icon-modal-active {
     display:block !important;
-    color: #106EEA !important;
+    color: #ff3860 !important;
 }
 .download-feature {
     cursor: pointer;
 }
 .file-feature.is-active > article > .icon-modal-active {
     display:block !important;
-    color: #106EEA !important;
+    color: #ff3860 !important;
 }
 .file-feature {
     cursor: pointer;
@@ -181,7 +181,7 @@
     content: none;
 }
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #106EEA;
+    background: #ff3860;
     color: white;
 }
 .gleetrees-warning {
@@ -299,7 +299,7 @@ div.container.pie-widget {
 }
 
 .robo-primary {
-    color: #106EEA !important;
+    color: #ff3860 !important;
 }
 
 @media (max-width: 770px) {
@@ -310,13 +310,17 @@ div.container.pie-widget {
 
 .column-progress {
     padding: 1.5rem;
-    border-left: 5px solid #3273dc;
+    border-left: 5px solid #000;
     font-size: large;
 }
 
+.has-background-danger-brand {
+    background-color: #D80000;
+}
 .column-progress.active {
-    border-left: 5px solid #faa42d;
+    border-left: 5px solid #D80000;
     font-weight: bold;
+    color: #D80000;
 }
 
 body.modal-open {
@@ -339,4 +343,24 @@ header#top {
 }
 .nav-menu a {
     font-weight: unset !important;
+}
+
+.is-danger-brand {
+    background-color: #D80000 !important;
+    color: #fff !important;
+}
+.button.is-danger-brand {
+    background-color: #D80000 !important;
+    color: #fff !important;
+}
+.button.is-danger-brand:hover {
+    border: 1px solid #D80000;
+    background-color: #ad0505 !important;
+    color: #fff !important;
+}
+.is-divider.is-danger-brand {
+    border-color: #D80000;
+}
+.is-divider.is-danger-brand::after {
+    color: #D80000;
 }

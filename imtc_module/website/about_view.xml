@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_about_form_template" name="Tentang Kami">
+        <t t-call="website.layout">
+            <t t-call="imtc_module.portal_style_template"/>
+            <t t-set="additional_title" t-value="web_title"></t>
+            <t t-set="no_footer">True</t>
+            <div class="hero is-fullheight-with-navbar hero-color-layout pb-4">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-vcentered">
+                            <div class="column is-4 is-offset-1 has-text-centered">
+                                <figure class="image is-inline-block">
+                                    <img class="p-4" src="/imtc_module/static/images/about-us.svg"/>
+                                </figure>
+                            </div>
+                            <div class="column is-6 is-offset-1 landing-caption">
+                                <!-- <h2 class="headline is-8">Hello, I'm</h2> -->
+                                <h1 class="title is-1 is-bold">
+                                    Tentang Kami
+                                </h1>
+                                <!-- <h2 class="subtitle is-4">Backend Developer</h2> -->
+                                <p>Kami adalah pusat pelatihan internasional untuk mutu, keselamatan dan kesehatan kerja, dan lingkungan. Kami juga terbuka untuk memperluas dan menjelajah ke industri lain.</p>
+                                <br/>
+                                <p>Tujuan utama kami adalah untuk mengembangkan khasanah atau kekayaan ilmu pengetahuan dalam industri yang semakin maju dan untuk meningkatkan budaya keselamatan, pola pikir dan praktik operasional kerja aman dengan melakukan pelatihan yang tepat, bimbingan dan konsultasi terhadap perusahaan dan individu.</p>
+                                <br/>
+                                <p>Kami berkomitmen untuk menjadi salah satu inisiator dalam rangka menumbuhkembangkan sumber daya manusia menjadi profesional yang hebat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="hero is-danger-brand">
+                <p class="has-text-centered title is-4 has-text-white">THE POWER SPIRIT THROUGH UNITY</p>
+            </section>
+            <div class="hero is-fullheight-with-navbar hero-color-layout pb-4">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-vcentered">
+                            <div class="column is-6 is-offset-1 landing-caption">
+                                <h1 class="title is-1 is-bold">
+                                    Visi Perusahaan
+                                </h1>
+                                <p>Mendapat pengakuan sebagai salah satu provider jasa pelatihan dan konsultasi terbaik secara global dan internasional.</p>
+                                <br/><br/>
+                                <h1 class="title is-1 is-bold">
+                                    Misi Perusahaan
+                                </h1>
+                                <p>Memberikan solusi berupa pelatihan dan konsultasi untuk meningkatkan kompetensi individu maupun korporasi.</p>
+                            </div>
+                            <div class="column is-4 is-offset-1 has-text-centered">
+                                <figure class="image is-inline-block">
+                                    <img class="p-4" src="/imtc_module/static/images/vision-mission.svg"/>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
