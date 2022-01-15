@@ -27,6 +27,7 @@
     ],
     'data': [
         'views/res_partner_view.xml',
+        'views/account_view.xml',
         'views/crm_view.xml',
         'views/student_view.xml',
         'views/student_attendance_view.xml',

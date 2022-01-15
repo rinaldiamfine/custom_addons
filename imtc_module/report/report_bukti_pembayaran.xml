@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
+        <report
+            id="report_account_move_bukti_pembayaran"
+            model="account.move"
+            string="Bukti Pembayaran"
+            name="imtc_module.report_bukti_pembayaran"
+            file="imtc_module.report_bukti_pembayaran"
+            report_type="qweb-pdf"/>
+
         <template id="report_bukti_pembayaran">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="company">

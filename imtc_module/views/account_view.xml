@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="imtc_module_account_move_view_form" model="ir.ui.view">
+        <field name="name">imtc.module.account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_print_receipt" type="object" string="Print Receipt"/>
+                <button name="action_print_payment" type="object" string="Print Payment"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
