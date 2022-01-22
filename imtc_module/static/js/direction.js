@@ -17,15 +17,15 @@ let AVAILABLE_FORM = [
 let AVAILABLE_NAVIGATION = [
     {
         'title': 'Pilih Program', 
-        'subtitle': 'Silahkan pilih program yang ingin didaftar'
+        'subtitle': 'Silahkan pilih program yang ingin anda ikuti.'
     },
     {
         'title': 'Informasi Diri', 
-        'subtitle': 'Masukkan informasi data diri anda'
+        'subtitle': 'Masukkan informasi data diri anda sesuai dengan KTP.'
     },
     {
         'title': 'Dokumen', 
-        'subtitle': 'Silahkan lengkapi dokumen yang dibutuhkan'
+        'subtitle': 'Lampirkan dokumen yang dibutuhkan untuk keperluan dalam mencetak sertifikat anda.'
     }
 ]
 

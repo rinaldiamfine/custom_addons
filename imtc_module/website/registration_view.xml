@@ -11,7 +11,7 @@
                             Pilih Program
                         </p>
                         <p id="page-subtitle" class="subtitle p-2">
-                            Silahkan pilih program yang ingin didaftar
+                            Silahkan pilih program yang ingin anda ikuti.
                         </p>
                         <div class="columns is-12">
                             <div class="column is-4">
@@ -31,7 +31,31 @@
                                     <div class="action-step active start">
                                         <form id="program-form">
                                             <div class="is-divider is-danger-brand" data-content="Pilih Program"></div>
-                                            
+                                            <div t-foreach="product_ids" t-as="product_line" class="columns is-12">
+                                                <div t-foreach="product_line" t-as="product" class="column is-4">
+                                                    <div class="card">
+                                                        <div class="card-content">
+                                                            <div class="content">
+                                                                <p t-esc="product.name" class="title is-6"/>
+                                                                <p t-esc="product.description" class="subtitle is-6"/>
+                                                            </div>
+                                                        </div>
+                                                        <footer class="card-footer">
+                                                            <a href="#" class="card-footer-item">Lihat Detail</a>
+                                                        </footer>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-if="len(product_ids) == 0">
+                                                <div class="columns is-12">
+                                                    <div class="column is-10 is-offset-1">
+                                                        <figure class="image is-2by1">
+                                                            <img class="p-4" src="/imtc_module/static/images/no-data.svg"/>
+                                                        </figure>
+                                                        <p class="title is-6 has-text-centered">List program tidak dapat ditemukan.</p>
+                                                    </div>
+                                                </div>
+                                            </t>
                                         </form>
                                     </div>
 

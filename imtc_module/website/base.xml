@@ -16,10 +16,10 @@
 
     <template id="portal_footer_template" name="Portal Footer Template">
         <div class="hero my-footer">
-            <div class="columns m-0 p-0">
-                <div class="column p-0 has-background-dark">
-                    <div class="column is-10 p-0 is-offset-1 ">
-                        <footer class="footer has-background-dark">
+            <div class="columns m-0 p-0 has-background-danger-brand">
+                <div class="column p-0">
+                    <div class="column is-10 p-0 is-offset-1">
+                        <footer class="footer has-background-danger-brand">
                             <div class="content">
                                 <p class="has-text-weight-light has-text-white">
                                     <b>
@@ -31,10 +31,10 @@
                     </div>
                 </div>
             </div>
-            <div class="columns m-0 p-0 pt-4 pb-4 has-background-danger-brand">
+            <div class="columns m-0 p-0 pt-4 pb-4 has-background-white">
                 <div class="column p-0">
-                    <div class="column is-10 p-0 is-offset-1 ">
-                        <p class="has-text-weight-light has-text-white">
+                    <div class="column is-10 p-0 is-offset-1 pl-4 pr-4">
+                        <p class="has-text-weight-light has-text-black pl-2 pr-2">
                             Copyright © 2022 · International Maritime Training Center · All rights reserved
                         </p>
                     </div>

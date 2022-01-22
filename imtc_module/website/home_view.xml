@@ -8,13 +8,73 @@
             <t t-set="no_footer">True</t>
             <div class="hero is-fullheight-with-navbar hero-color-layout pb-4">
                 <div class="hero-body">
-                    <div class="container">
+                    <!-- <div class="container">
                         <p class="title p-2" id="page-title">
-                            Home
+                            INTERNATIONAL MARITIME TRAINING CENTER
                         </p>
                         <p id="page-subtitle" class="subtitle p-2">
-                            home content ...
+                            GLOBAL TRAINING AND CONSULTANCY PROVIDER
                         </p>
+                    </div> -->
+                    <div class="container">
+                        <div class="columns is-vcentered">
+                            <div class="column is-6 is-offset-1 landing-caption">
+                                <h1 class="title is-1 is-bold is-spaced is-mobile font-2">
+                                    INTERNATIONAL MARITIME TRAINING CENTER
+                                </h1>
+                                <h2 class="subtitle is-5 is-muted font-1">GLOBAL TRAINING AND CONSULTANCY PROVIDER</h2>
+                                <button class="button is-danger-brand is-large is-rounded"><p class="pl-4 pr-4">Daftar</p></button>
+                            </div>
+                            <div class="column is-4 is-offset-1 has-text-centered">
+                                <figure class="image is-inline-block">
+                                    <img class="p-4" src="/imtc_module/static/images/global.svg"/>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero is-medium is-danger-brand">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-vcentered">
+                            <div class="column is-10 is-offset-1">
+                                <h1 class="title is-1 has-text-centered has-text-white font-2">
+                                    Tingkatkan kompetensi Anda bersama Kami
+                                </h1>
+                                <h2 class="subtitle is-5 is-muted has-text-centered has-text-white mt-4 font-1">Kini tidak lagi sulit menentukan kompetensi mana yang ingin anda asah, karena anda dapat berkonsultasi dengan kami berdasarkan kebutuhan lapangan pekerjaan yang tersedia di zaman ini.</h2>
+                                <div class="has-text-centered mt-4">
+                                    <button class="button is-white is-medium is-rounded"><p class="pl-4 pr-4">Lihat Program</p></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero is-medium hero-color-layout pb-4">
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-vcentered">
+                            <div class="column is-10 is-offset-1">
+                                <p class="title p-2 font-2 has-text-centered font-2" id="page-title">
+                                    Pertanyaan yang sering diajukan
+                                </p>
+                                <div class="dropdown is-active">
+                                    <div class="dropdown-trigger">
+                                        <button class="button is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu2">
+                                            <span>Content</span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                                        <div class="dropdown-content">
+                                            <div class="dropdown-item">
+                                                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

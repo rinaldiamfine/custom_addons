@@ -11,14 +11,29 @@ class TraineeRegistration(http.Controller):
 
     @http.route('/registration', type='http', auth='public', website=True)
     def registrationForm(self, **kw):
+        map_product_ids = []
         class_obj = request.env['student.class']
+        product_obj = request.env['product.product']
         country_obj = request.env['res.country']
         state_obj = request.env['res.country.state']
         class_ids = class_obj.search([('state','=','open')])
+        product_ids = product_obj.search([('active','=',True), ('is_course','=',True)])
+        temp_product = []
+        count_product = 0
+        PPL = 2 #START FROM 0
+        for product in product_ids:
+            temp_product.append(product)
+            count_product += 1
+            if len(temp_product) > PPL:
+                map_product_ids.append(temp_product)
+                temp_product = []
+            if len(product_ids) == count_product:
+                map_product_ids.append(temp_product)
         values = {
             'web_title': "Registration",
             'class_ids': class_ids,
-            'step': 1
+            'step': 1,
+            'product_ids': map_product_ids,
         }
         return request.render("imtc_module.portal_registration_form_template", values)
 

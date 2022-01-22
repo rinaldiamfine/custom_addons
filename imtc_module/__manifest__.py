@@ -32,6 +32,7 @@
         'views/student_view.xml',
         'views/student_attendance_view.xml',
         'views/student_class_view.xml',
+        'views/product_view.xml',
         'views/student_session_view.xml',
         'views/menuitem_view.xml',
 

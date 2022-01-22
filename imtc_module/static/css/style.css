@@ -364,3 +364,12 @@ header#top {
 .is-divider.is-danger-brand::after {
     color: #D80000;
 }
+.card-footer-item {
+    font-size: small !important;
+}
+.font-1 {
+    font-size: 1rem !important;
+}
+.font-2 {
+    font-size: 2rem !important;
+}
