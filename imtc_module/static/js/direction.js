@@ -3,11 +3,21 @@ $(document).ready(function () {
     step.val(0);
     $('.action-registration-back').click(function() {
         var prevStep = parseInt(step.val()) - parseInt(1);
-        changeForm(prevStep, this);
+        var setup = setupLocalStorage(step.val());
+        if (setup['status']) {
+            changeForm(prevStep, this);
+        } else {
+            alert(setup['msg'])
+        }
     });
     $('.action-registration-next').click(function() {
         var nextStep = parseInt(step.val()) + parseInt(1);
-        changeForm(nextStep, this);
+        var setup = setupLocalStorage(step.val());
+        if (setup['status'] === true) {
+            changeForm(nextStep, this);
+        } else if (setup['status'] == false) {
+            alert(setup['msg'])
+        }
     });
 });
 
@@ -69,8 +79,36 @@ function changeForm(steps, btn) {
     }
 }
 
-function setupLocalStorage() {
-
+function setupLocalStorage(index) {
+    console.log("GET FORM", index);
+    var path = '';
+    var urlStorage = window.location.pathname;
+    var noError = true;
+    if (index == 0) {
+        // SELECT PROGRAM
+        var selectedProgram = $('.card.is-active');
+        console.log(selectedProgram.length, "GET LENGTH")
+        if (selectedProgram.length == 0) {
+            noError = false;
+        } 
+        if (noError) {
+            path = urlStorage + '-' + 'program'
+            var storage = localStorage.getItem(path);
+            if (storage) {
+            } else {
+                localStorage.setItem(path, selectedProgram[0].id)
+            }
+        }
+        return {
+            'status': noError,
+            'msg': 'Silahkan pilih program yang tersedia!'
+        };
+    }
+    else if (index == 1) {
+        // PERSONAL INFORMATION
+    } else {
+        // IMAGE FILES
+    }
 }
 
 function getLocalStorage() {

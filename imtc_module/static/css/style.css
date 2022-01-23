@@ -373,3 +373,14 @@ header#top {
 .font-2 {
     font-size: 2rem !important;
 }
+
+.card-status {
+    display: none;
+    color: #D80000;
+    position: absolute;
+    left: 85%;
+    padding-top: 0.5rem;
+}
+.card.is-active>.card-status {
+    display: block !important;
+}
