@@ -36,7 +36,7 @@ class BuktiPenerimaan(models.AbstractModel):
             'company_id': company_id,
         })
         print(data, "GET DATA FINAL")
-        print(flush=True)
+        # print(flush=True)
         return data
 
     def say_number(self, i):

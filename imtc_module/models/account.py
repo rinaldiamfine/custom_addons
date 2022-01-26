@@ -8,9 +8,9 @@ class CrmLead(models.Model):
 
     def action_print_receipt(self):
         print("GET PRINT RECEIPT")
-        print(flush=True)
+        # print(flush=True)
 
     def action_print_payment(self):
         print("GET PRINT PAYMENT")
-        print(flush=True)
+        # print(flush=True)
 

@@ -80,7 +80,6 @@ function changeForm(steps, btn) {
 }
 
 function setupLocalStorage(index) {
-    console.log("GET FORM", index);
     var path = '';
     var urlStorage = window.location.pathname;
     var noError = true;
@@ -106,9 +105,7 @@ function setupLocalStorage(index) {
         if (infoForm.length > 0) {
             infoForm.each(function() {
                 var inputData = $(this).find(':input');
-                console.log(inputData, "GET INPUT DATA");
                 for (var i=0; i<inputData.length; i++) {
-                    console.log(inputData[i].value, "PALUE");
                     if (inputData[i].value == ''){
                         noError = false;
                         break;
@@ -127,6 +124,24 @@ function setupLocalStorage(index) {
         };
     } else {
         // IMAGE FILES
+        var values = {};
+        programPath = urlStorage + '-' + 'program';
+        infoPath = urlStorage + '-' + 'info';
+        values['program'] = localStorage.getItem(infoPath);
+        values['info'] = localStorage.getItem(programPath);
+        var fileList = document.getElementById("file-document");
+
+        odoo.define('imtc_module.register_data_student', function (require) {
+            "use strict";
+            
+            if (fileList) {
+                values['files'] = fileList.FileList_Array;
+            }        
+            var ajax = require('web.ajax');
+            ajax.jsonRpc('/student/create-leads', 'call', {'obj':values}).then(function(result) {
+                console.log(result, "GET RESULT DATA");
+            });
+        });
     }
 }
 
