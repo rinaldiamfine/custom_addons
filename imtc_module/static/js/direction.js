@@ -87,17 +87,12 @@ function setupLocalStorage(index) {
     if (index == 0) {
         // SELECT PROGRAM
         var selectedProgram = $('.card.is-active');
-        console.log(selectedProgram.length, "GET LENGTH")
         if (selectedProgram.length == 0) {
             noError = false;
         } 
         if (noError) {
-            path = urlStorage + '-' + 'program'
-            var storage = localStorage.getItem(path);
-            if (storage) {
-            } else {
-                localStorage.setItem(path, selectedProgram[0].id)
-            }
+            path = urlStorage + '-' + 'program';
+            localStorage.setItem(path, selectedProgram[0].id);
         }
         return {
             'status': noError,
@@ -106,6 +101,30 @@ function setupLocalStorage(index) {
     }
     else if (index == 1) {
         // PERSONAL INFORMATION
+        var formData = {};
+        var infoForm = $('form#info-form');
+        if (infoForm.length > 0) {
+            infoForm.each(function() {
+                var inputData = $(this).find(':input');
+                console.log(inputData, "GET INPUT DATA");
+                for (var i=0; i<inputData.length; i++) {
+                    console.log(inputData[i].value, "PALUE");
+                    if (inputData[i].value == ''){
+                        noError = false;
+                        break;
+                    }
+                    formData[String(inputData[i].name)] = inputData[i].value;
+                }
+            });
+        }
+        if (noError) {
+            path = urlStorage + '-' + 'info';
+            localStorage.setItem(path, JSON.stringify(formData));
+        }
+        return {
+            'status': noError,
+            'msg': 'Lengkapi data diri anda!'
+        };
     } else {
         // IMAGE FILES
     }
