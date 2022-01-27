@@ -68,11 +68,11 @@
                                             <div class="columns">
                                                 <div class="column is-6">
                                                     <div class="field">
-                                                        <label class="label" for="name">Nama</label>
+                                                        <label class="label" for="id-no">NIK KTP</label>
                                                         <div class="control has-icons-left has-icons-right">
-                                                            <input class="input is-fullwidth" type="text" name="name" id="name" placeholder="Nama Lengkap ..." required=""/>
+                                                            <input class="input is-fullwidth" type="text" name="id-no" id="id-no" placeholder="NO. NIK KTP ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-user"></i>
+                                                                <i class="fa fa-id-card"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -83,11 +83,11 @@
                                             <div class="columns">
                                                 <div class="column is-6">
                                                     <div class="field">
-                                                        <label class="label" for="id-no">No. KTP</label>
+                                                        <label class="label" for="name">Nama</label>
                                                         <div class="control has-icons-left has-icons-right">
-                                                            <input class="input is-fullwidth" type="text" name="id-no" id="id-no" placeholder="No. KTP ..." required=""/>
+                                                            <input class="input is-fullwidth" type="text" name="name" id="name" placeholder="Nama Lengkap ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-id-card"></i>
+                                                                <i class="fa fa-user"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -119,15 +119,39 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="columns">
+                                                <div class="column is-6">
+                                                    <div class="field">
+                                                        <label class="label" for="education">Pendidikan</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="education" id="education" placeholder="Pendidikan Terakhir ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-graduation-cap"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="column is-6">
+                                                    <!-- <div class="field">
+                                                        <label class="label" for="phone">No. Telepon</label>
+                                                        <div class="control has-icons-left has-icons-right">
+                                                            <input class="input is-fullwidth" type="text" name="phone" id="phone" placeholder="No Telepon ..." required=""/>
+                                                            <span class="icon is-small is-left is-evaline">
+                                                                <i class="fa fa-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
                                             <div class="is-divider is-danger-brand" data-content="Alamat"></div>
                                             <div class="columns">
                                                 <div class="column is-6">
                                                     <div class="field">
                                                         <label class="label" for="street">Tempat Tinggal</label>
                                                         <div class="control has-icons-left has-icons-right">
-                                                            <input class="input is-fullwidth" type="text" name="street" id="street" placeholder="Jl. xyz ..." required=""/>
+                                                            <input class="input is-fullwidth" type="text" name="street" id="street" placeholder="Perumahan abc / Jl. xyz ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-envelope"></i>
+                                                                <i class="fa fa-address-card-o"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -142,7 +166,7 @@
                                                         <div class="control has-icons-left has-icons-right">
                                                             <input class="input is-fullwidth" type="text" name="street2" id="street2" placeholder="Blok xx No. yy ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-phone"></i>
+                                                                <i class="fa fa-address-card-o"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -151,29 +175,29 @@
                                                 </div>
                                             </div>
                                             <div class="columns">
-                                                <div class="column is-4">
+                                                <div class="column is-6">
                                                     <div class="field">
                                                         <label class="label" for="street">Kota</label>
                                                         <div class="control has-icons-left has-icons-right">
                                                             <input class="input is-fullwidth" type="text" name="city" id="city" placeholder="Kota ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-envelope"></i>
+                                                                <i class="fa fa-globe"></i>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="column is-4">
+                                                <div class="column is-6">
                                                     <div class="field">
                                                         <label class="label" for="street">Provinsi</label>
                                                         <div class="control has-icons-left has-icons-right">
                                                             <input class="input is-fullwidth" type="text" name="state" id="state" placeholder="Provinsi ..." required=""/>
                                                             <span class="icon is-small is-left is-evaline">
-                                                                <i class="fa fa-envelope"></i>
+                                                                <i class="fa fa-globe"></i>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="column is-4">
+                                                <!-- <div class="column is-4">
                                                     <div class="field">
                                                         <label class="label" for="street">Kode POS</label>
                                                         <div class="control has-icons-left has-icons-right">
@@ -183,9 +207,9 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <div class="columns">
+                                            <!-- <div class="columns">
                                                 <div class="column is-6">
                                                     <div class="field">
                                                         <label class="label" for="country">Negara</label>
@@ -199,15 +223,37 @@
                                                 </div>
                                                 <div class="column is-6">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </form>
                                     </div>
 
                                     <div class="action-step end">
-                                        <form id="file-form">
-                                            <div class="is-divider is-danger-brand" data-content="Dokumen yang diperlukan"></div>
-                                            
-                                        </form>
+                                        <div class="is-divider is-danger-brand" data-content="Dokumen yang diperlukan"></div>
+                                        <div id="tile-information-file" class="tile is-12 is-parent" style="display:none;">
+                                            <div class="box tile uploader-tile">
+                                                <table id="table_file" class="table is-borderless">
+                                                </table>
+                                                <input type="file" id="doc-file" name="doc-file" style="display:none;"/>
+                                            </div>
+                                        </div>
+                                        <div class="tile is-parent">
+                                            <form id="file-form" class="drag-box">
+                                                <div class="box__input">
+                                                    <input class="box__file" type="file" name="upload-file" id="upload-file" data-multiple-caption="{count} files selected" multiple="" onchange="GenerateWidgetDraggable()"/>
+                                                    <label for="upload-file" class="drag-box-label">
+                                                        <div class="drag-box-content">
+                                                            <span class="drag-box-content-icon">
+                                                                <i class="fa fa-cloud-upload fa-10x"/>
+                                                            </span>
+                                                            <br/>
+                                                            <p class="drag-box-content-title-1 title m-0">Drag and Drop the Files</p>
+                                                            <p class="drag-box-content-title-2">or</p>
+                                                            <p class="drag-box-content-title-3">Browse File(s)</p>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
 
                                     <div class="is-divider is-danger-brand"></div>
@@ -236,6 +282,7 @@
             </div>
             <script type="text/javascript" src="/imtc_module/static/js/direction.js"></script>
             <script type="text/javascript" src="/imtc_module/static/js/registration.js"></script>
+            <script type="text/javascript" src="/imtc_module/static/js/uploader.js"></script>
         </t>
     </template>
 </odoo>
