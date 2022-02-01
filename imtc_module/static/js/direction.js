@@ -12,11 +12,27 @@ $(document).ready(function () {
     });
     $('.action-registration-next').click(function() {
         var nextStep = parseInt(step.val()) + parseInt(1);
-        var setup = setupLocalStorage(step.val());
-        if (setup['status'] === true) {
-            changeForm(nextStep, this);
-        } else if (setup['status'] == false) {
-            alert(setup['msg'])
+        console.log(nextStep , "GET NEXT STEP");
+        var allForms = $("div.action-step");
+        console.log(allForms.length, "LENGT ALL FORMS");
+        if (allForms === nextStep) {
+            var res = setupLocalStorage(step.val());
+            if (res['status'] == false) {
+                alert(res['msg']);
+                window.location.href = '/registration';
+            } else {
+                alert(res['msg']);
+                window.location.href = '/';
+            }
+        } else {
+            var setup = setupLocalStorage(step.val());
+            if (setup) {
+                if (setup['status'] === true) {
+                    changeForm(nextStep, this);
+                } else if (setup['status'] == false) {
+                    alert(setup['msg']);
+                }
+            }
         }
     });
 });
@@ -127,19 +143,21 @@ function setupLocalStorage(index) {
         var values = {};
         programPath = urlStorage + '-' + 'program';
         infoPath = urlStorage + '-' + 'info';
-        values['program'] = localStorage.getItem(infoPath);
-        values['info'] = localStorage.getItem(programPath);
-        var fileList = document.getElementById("file-document");
+        values['info'] = JSON.parse(localStorage.getItem(infoPath));
+        values['program'] = localStorage.getItem(programPath);
+        var fileList = document.getElementById("doc-file");
 
         odoo.define('imtc_module.register_data_student', function (require) {
             "use strict";
             
             if (fileList) {
                 values['files'] = fileList.FileList_Array;
-            }        
+            }
+            console.log(values, "GET VALUES")
             var ajax = require('web.ajax');
-            ajax.jsonRpc('/student/create-leads', 'call', {'obj':values}).then(function(result) {
+            ajax.jsonRpc('/action/registration/manager', 'call', {'obj':values}).then(function(result) {
                 console.log(result, "GET RESULT DATA");
+                return result;
             });
         });
     }

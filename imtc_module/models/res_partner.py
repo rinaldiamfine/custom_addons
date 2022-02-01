@@ -7,6 +7,7 @@ class ResPartner(models.Model):
 
     id_number = fields.Char(string="Identity No.")
     student_id = fields.Many2one('student.student', string="Student")
+    education = fields.Char(string="Education")
     # product_id = fields.Many2one('product.product', string="Training Program")
 
     @api.model
@@ -36,6 +37,7 @@ class ResPartner(models.Model):
             values['country_id'] = values['country_id']
             values['email'] = values['email'] if values.get('email') else values['email_from']
             values['phone'] = values['phone']
+            values['education'] = values['education']
 
         else:
             active_id = context.get('active_id')

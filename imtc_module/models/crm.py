@@ -7,7 +7,9 @@ class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
     id_number = fields.Char(string="Identity No.")
+    education = fields.Char("Education")
     product_id = fields.Many2one('product.product', string="Training Program")
+    class_id = fields.Many2one('student.class', string="Class")
 
     def action_new_quotation(self):
         res = super(CrmLead, self).action_new_quotation()
@@ -50,6 +52,7 @@ class CrmLead(models.Model):
             'website': self.website,
             'is_company': is_company,
             'type': 'contact',
-
+            
+            'education': self.education,
             'id_number': self.id_number
         }

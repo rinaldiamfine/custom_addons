@@ -33,6 +33,7 @@
                                 </group>
                                 <group>
                                     <field name="id_number"/>
+                                    <field name="education"/>
                                     <field name="email"/>
                                     <field name="phone"/>
                                 </group>
@@ -42,13 +43,10 @@
                             <field name="student_class_ids"/>
                         </page>
                         <page string="Payment" name="student_payment">
-                            <group>
-                                <group>
-                                
-                                </group>
-                                <group>
-                                </group>
-                            </group>
+                            <field name="student_invoice_ids"/>
+                        </page>
+                        <page string="Attachment" name="student_attachment">
+                            <field name="student_attachment_ids"/>
                         </page>
                     </notebook>                    
                 </sheet>

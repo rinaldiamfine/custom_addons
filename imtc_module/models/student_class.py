@@ -17,23 +17,23 @@ class StudentClass(models.Model):
     # @api.multi
     def setToDraft(self):
         for data in self:
-            data.status = 'draft'
+            data.state = 'draft'
     # @api.multi
     def setToOpen(self):
         for data in self:
-            data.status = 'open'
+            data.state = 'open'
     # @api.multi
     def setToStart(self):
         for data in self:
-            data.status = 'start'
+            data.state = 'start'
     # @api.multi
     def setToFinish(self):
         for data in self:
-            data.status = 'finish'
+            data.state = 'finish'
     # @api.multi
     def setToCancel(self):
         for data in self:
-            data.status = 'cancel'
+            data.state = 'cancel'
     
 class AssignedStudent(models.Model):
     _name = 'assigned.student'

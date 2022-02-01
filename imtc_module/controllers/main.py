@@ -10,10 +10,44 @@ import werkzeug
 class TraineeRegistration(http.Controller):
     @http.route('/action/registration/manager', type='json', auth='public')
     def actionRegistrationManager(self, obj, **kw):
+        attachment_obj = request.env['ir.attachment']
+        crm_obj = request.env['crm.lead']
+        class_obj = request.env['student.class']
+        class_id = class_obj.browse(int(obj['program']) if obj.get('program') else 0)
         res = {
             'status': False,
             'msg': 'Registrasi gagal, Silahkan coba lagi!'
         }
+        if class_id:
+            info = obj['info'] if obj.get('info') else {}
+            crm_values = {
+                'name': "Training Registration",
+                'class_id': class_id.id,
+                'product_id': class_id.product_id.id,
+                'contact_name': info['name'] if info.get('name') else '',
+                'id_number': info['id-no'] if info.get('id-no') else '',
+                'education': info['education'] if info.get('education') else '',
+                'email_from': info['email'] if info.get('email') else '',
+                'phone': info['phone'] if info.get('phone') else '',
+                'street': info['street'] if info.get('street') else '',
+                'street2': info['street2'] if info.get('street2') else '',
+                'city': info['city'] if info.get('city') else '',
+                #CHANGE TO SELECTION
+                # 'state': info['state'] if info.get('state') else '',
+            }
+            crm_id = crm_obj.sudo().create(crm_values)
+            files = obj['files'] if obj.get('files') else []
+            for file in files:
+                attachment_values = {
+                    'res_id': crm_id.id,
+                    'res_model': 'crm.lead',
+                    'name': file['name'] if file.get('name') else '',
+                    'datas': file['datas'] if file.get('datas') else '',
+
+                }
+                attachment_id = attachment_obj.sudo().create(attachment_values)
+            res['status'] = True
+            res['msg'] = 'Registrasi berhasil!'
         return res
 
     @http.route('/registration', type='http', auth='public', website=True)
@@ -29,7 +63,7 @@ class TraineeRegistration(http.Controller):
         temp_course= []
         count_course = 0
         PPL = 2 #START FROM 0
-        for course in course_ids:
+        for course in class_ids:
             temp_course.append(course)
             count_course += 1
             if len(temp_course) > PPL:

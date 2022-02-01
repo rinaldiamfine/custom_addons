@@ -8,6 +8,7 @@ class Student(models.Model):
 
     id_number = fields.Char(String="Identity No.", required=True)
     name = fields.Char(string='Name')
+    education = fields.Char(string="Education")
     photo = fields.Binary(string='Photo')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
@@ -22,6 +23,8 @@ class Student(models.Model):
     country_id = fields.Many2one('res.country', string="Country")
     
     student_class_ids = fields.One2many('assigned.student', 'student_id', string="Class")
+    student_invoice_ids = fields.Many2many('account.move', string="Invoices")
+    student_attachment_ids = fields.Many2many('ir.attachment', string="Attachments")
 
     _sql_constraints = [
         (

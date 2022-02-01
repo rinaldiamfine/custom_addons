@@ -9,6 +9,7 @@
             <xpath expr="//field[@name='vat']" position="after">
                 <field name="id_number"/>
                 <field name="student_id"/>
+                <field name="education"/>
             </xpath>
         </field>
     </record>

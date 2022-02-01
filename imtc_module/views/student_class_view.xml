@@ -6,6 +6,11 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="setToDraft" string="Set To Draft" type="object" states="cancel,open"/>
+                    <button name="setToOpen" string="Set To Open" type="object" class="btn-primary" states="draft"/>
+                    <button name="setToStart" string="Set To Start" type="object" class="btn-primary" states="open"/>
+                    <button name="setToFinish" string="Set To Finish" type="object" class="btn-primary" states="start"/>
+                    <button name="setToCancel" string="Set To Cancel" type="object" states="draft"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,open,start,finish"/>
                 </header>
                 <sheet>
@@ -16,14 +21,50 @@
                         <field name="active" invisible="1"/>
                     </div>
                     <group>
-                        <field name="product_id"/>
+                        <field name="product_id" domain="[('is_course','=',True)]"/>
                     </group>
                     <notebook>
                         <page string="Students" name="student_list">
-                            <field name="assigned_student_ids" nolabel="1"/>
+                            <field name="assigned_student_ids" nolabel="1">
+                                <tree create="false" delete="false">
+                                    <field name="student_id"  options="{'no_quick_create':True,'no_create_edit':True}"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="student_id" readonly="1" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                         <page string="Session" name="student_session">
-                            <field name="session_ids" nolabel="1"/>
+                            <field name="session_ids" nolabel="1">
+                                <tree>
+                                    <field name="name" string="Session Name"/>
+                                    <field name="start_date" string="Start Date"/>
+                                    <field name="finish_date" string="Finish Date"/>
+                                </tree>
+                                <form>
+                                    <header>
+                                    </header>
+                                    <sheet>
+                                        <div class="oe_title">
+                                            <h1>
+                                                <field name="name"/>
+                                            </h1>
+                                            <field name="active" invisible="1"/>
+                                        </div>
+                                        <group>
+                                            <field name="start_date"/>
+                                            <field name="finish_date"/>
+                                        </group>
+                                        <notebook>
+                                            <page string="Students" name="student_list">
+                                                <field name="student_attendance_ids" nolabel="1"/>
+                                            </page>
+                                        </notebook>                    
+                                    </sheet>
+                                </form>
+                            </field>
                         </page>
                     </notebook>                    
                 </sheet>
