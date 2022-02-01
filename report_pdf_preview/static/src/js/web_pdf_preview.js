@@ -5,19 +5,15 @@ odoo.define('report_pdf_preview.report', function (require) {
     var framework = require('web.framework');
 
     var PreviewDialog = require('report_pdf_preview.PreviewDialog');
-    /**
-     * JULEB CUSTOMISATION
-     * Disable report pdf preview if it's on POS.UI Session
-     */
 
     ActionManager.include({
         _executeReportAction: function (action, options) {
             var self = this;
             action = _.clone(action);
-            var currentTag = this.getCurrentAction().tag;
-            if (action.report_type === 'qweb-pdf' && currentTag != 'pos.ui' && !['JMS Format', 'Government Invoice'].includes(action.name)) {
+
+            if (action.report_type === 'qweb-pdf') {
                 return this.call('report', 'checkWkhtmltopdf').then(function (state) {
-//                    var active_ids_path = '/' + action.context.active_ids.join(',');
+                    var active_ids_path = '/' + action.context.active_ids.join(',');
                     // var url = '/report/pdf/' + action.report_name + active_ids_path;
                     var url = self._makeReportUrls(action)['pdf'];
                     var filename = action.report_name;

@@ -21,7 +21,7 @@ odoo.define('report_pdf_preview.PreviewHandler', function (require) {
 "use strict";
 
 var core = require('web.core');
-var session = require('web.session');
+
 var QWeb = core.qweb;
 var _t = core._t;
 
@@ -48,15 +48,11 @@ var PDFHandler = BaseHandler.extend({
 		return ['application/pdf'].includes(mimetype);
     },
     createHtml: function(url, mimetype, extension, title) {
-    	var result = $.Deferred();
-    	var reportUrl = `/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=${url}`;
-    	if ( !(url && url.includes('context')) ) {
-            reportUrl = `/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=${url}?context%3D${encodeURIComponent(JSON.stringify(session.user_context))}`;
-    	}
-//    	var viewerUrlTempalte = _.template('/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=<%= url %>');
-    	result.resolve($(QWeb.render('ViewerJSFrame', {url: reportUrl})));
+    	var result = $.Deferred();	
+    	var viewerUrlTempalte = _.template('/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=<%= url %>');
+    	result.resolve($(QWeb.render('ViewerJSFrame', {url: viewerUrlTempalte({url})})));
 		return result;
-	},
+	},    
 });
 
 var OpenOfficeHandler = BaseHandler.extend({
@@ -69,13 +65,9 @@ var OpenOfficeHandler = BaseHandler.extend({
 				'application/vnd.oasis.opendocument.spreadsheet'].includes(mimetype);
     },
     createHtml: function(url, mimetype, extension, title) {
-    	var result = $.Deferred();
-        var reportUrl = `/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=${url}`;
-    	if ( !(url && url.includes('context')) ) {
-            reportUrl = `/report_pdf_preview/static/lib/PDFjs/web/viewer.html?file=${url}?context%3D${encodeURIComponent(JSON.stringify(session.user_context))}`;
-    	}
-//    	var viewerUrlTempalte = _.template('/report_pdf_preview/static/lib/ViewerJS/index.html#<%= url %>');
-		result.resolve($(QWeb.render('ViewerJSFrame', {url: reportUrl})));
+    	var result = $.Deferred();	
+    	var viewerUrlTempalte = _.template('/report_pdf_preview/static/lib/ViewerJS/index.html#<%= url %>');
+		result.resolve($(QWeb.render('ViewerJSFrame', {url: viewerUrlTempalte({url})})));
 		return result;
     },
 });

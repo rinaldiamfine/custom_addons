@@ -19,7 +19,6 @@
 
 <templates>
 	<div t-name="ViewerJSFrame" class="o_preview_viewerjs">
-		<meta http-equiv="Cache-control" content="no-cache" />
 		<iframe allowfullscreen="allowfullscreen"
 			webkitallowfullscreen="webkitallowfullscreen" 
 			t-att-src="url">

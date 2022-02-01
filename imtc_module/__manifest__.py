@@ -35,6 +35,8 @@
         'views/product_view.xml',
         'views/student_session_view.xml',
         'views/menuitem_view.xml',
+        'views/res_group_view.xml',
+        'views/menuitem_base_view.xml',
 
         'website/base.xml',
         'website/home_view.xml',

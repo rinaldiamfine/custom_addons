@@ -3,28 +3,19 @@ $(document).ready(function () {
     step.val(0);
     $('.action-registration-back').click(function() {
         var prevStep = parseInt(step.val()) - parseInt(1);
-        var setup = setupLocalStorage(step.val());
-        if (setup['status']) {
-            changeForm(prevStep, this);
-        } else {
-            alert(setup['msg'])
-        }
+        changeForm(prevStep, this);
     });
+
     $('.action-registration-next').click(function() {
         var nextStep = parseInt(step.val()) + parseInt(1);
         console.log(nextStep , "GET NEXT STEP");
         var allForms = $("div.action-step");
         console.log(allForms.length, "LENGT ALL FORMS");
-        if (allForms === nextStep) {
-            var res = setupLocalStorage(step.val());
-            if (res['status'] == false) {
-                alert(res['msg']);
-                window.location.href = '/registration';
-            } else {
-                alert(res['msg']);
-                window.location.href = '/';
-            }
+        if (allForms.length == nextStep) {
+            console.log("COND TOP")
+            setupLocalStorage(step.val(), 'create');
         } else {
+            console.log("COND BOTTOM")
             var setup = setupLocalStorage(step.val());
             if (setup) {
                 if (setup['status'] === true) {
@@ -95,10 +86,11 @@ function changeForm(steps, btn) {
     }
 }
 
-function setupLocalStorage(index) {
+function setupLocalStorage(index, action) {
     var path = '';
     var urlStorage = window.location.pathname;
     var noError = true;
+    console.log(index, "GET INDEX", action)
     if (index == 0) {
         // SELECT PROGRAM
         var selectedProgram = $('.card.is-active');
@@ -138,7 +130,7 @@ function setupLocalStorage(index) {
             'status': noError,
             'msg': 'Lengkapi data diri anda!'
         };
-    } else {
+    } else if (index == 2 && action == 'create') {
         // IMAGE FILES
         var values = {};
         programPath = urlStorage + '-' + 'program';
@@ -157,7 +149,13 @@ function setupLocalStorage(index) {
             var ajax = require('web.ajax');
             ajax.jsonRpc('/action/registration/manager', 'call', {'obj':values}).then(function(result) {
                 console.log(result, "GET RESULT DATA");
-                return result;
+                if (result['status'] == false) {
+                    alert(result['msg']);
+                    window.location.href = '/registration';
+                } else {
+                    alert(result['msg']);
+                    window.location.href = '/';
+                }
             });
         });
     }

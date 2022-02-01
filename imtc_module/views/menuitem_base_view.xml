@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem
+        id="calendar.mail_menu_calendar"
+        name="Calendar"
+        sequence="2"
+        action="calendar.action_calendar_event"
+        web_icon="calendar,static/description/icon.png"
+        groups="imtc_module.group_show_unused_menu"/>
+
+    
+    <menuitem id="utm.menu_link_tracker_root"
+        name="Link Tracker"
+        sequence="30"
+        web_icon="utm,static/description/icon.png"
+        groups="imtc_module.group_show_unused_menu"/>
+
+    <menuitem id="account.menu_action_move_out_receipt_type"
+        groups="imtc_module.group_show_unused_menu"/>
+    <menuitem id="account.menu_action_move_in_receipt_type"
+        groups="imtc_module.group_show_unused_menu"/>
+
+
+    <menuitem id="account.menu_action_move_out_refund_type"
+        groups="imtc_module.group_show_unused_menu"/>
+    <menuitem id="account.menu_action_move_in_refund_type"
+        groups="imtc_module.group_show_unused_menu"/>
+</odoo>
