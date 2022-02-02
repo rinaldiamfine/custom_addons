@@ -18,12 +18,56 @@
                     </div>
                 </button>
             </xpath>
-            <xpath expr="//field[@name='phone']" position="after">
+            <!-- <xpath expr="//field[@name='phone']" position="after">
                 <field name="id_number"/>
                 <field name="product_id"/>
                 <field name="education"/>
                 <field name="class_id"/>
+            </xpath> -->
+            <xpath expr="//div[hasclass('oe_title')]" position="replace">
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only" string="Lead" attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
+                    <label for="name" class="oe_edit_only" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+                    <h1><field name="name" placeholder="e.g. Product Pricing"/></h1>
+                </div>
             </xpath>
+            <xpath expr="//form/sheet/group[1]/group[2]" position="replace">
+                <group>
+                    <field name="id_number"/>
+                    <field name="contact_name"/>
+                    <field name="product_id"/>
+                    <field name="class_id"/>
+                </group>
+            </xpath>
+
+            <xpath expr="//form/sheet/group[1]/group[4]" position="replace">
+            
+            </xpath>
+            <notebook position="replace">
+                <notebook>
+                    <page string="Detail Information">
+                        <group>
+                            <group>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="phone" placeholder="Phone"/>
+                                <field name="email_from" placeholder="Email"/>
+                                <field name="education"/>
+                                <field name="probability" invisible="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </notebook>
         </field>
     </record>
 
