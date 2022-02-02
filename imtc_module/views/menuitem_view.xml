@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="menu_student_trainee_base" sequence="65" name="Student Trainee" 
-        web_icon="mail,static/description/icon.png"/>
+    <menuitem id="menu_student_trainee_base" sequence="65" name="Student" 
+        web_icon="contacts,static/description/icon.png"/>
     <menuitem id="menu_student_student_trainee" parent="menu_student_trainee_base" sequence="10" name="Student Trainee" action="action_student_student"/>
-    <menuitem id="menu_student_class_trainee" parent="menu_student_trainee_base" sequence="20" name="Class" action="action_student_class"/>
-    <menuitem id="menu_student_attendance_trainee" parent="menu_student_trainee_base" sequence="20" name="Student Attendance" action="action_student_attendance"/>
+    
+    
+    <menuitem id="menu_student_class_base" sequence="65" name="Class" 
+        web_icon="point_of_sale,static/description/icon.png"/>
+    <menuitem id="menu_student_class_trainee" parent="menu_student_class_base" sequence="10" name="Class" action="action_student_class"/>
+    <menuitem id="menu_student_attendance_trainee" parent="menu_student_class_base" sequence="20" name="Student Attendance" action="action_student_attendance"/>
+
+    <menuitem id="menu_brochure_brochure_base" sequence="66" name="Brochure" 
+        web_icon="note,static/description/icon.png"/>
+    <menuitem id="menu_brochure_brochure_data" parent="menu_brochure_brochure_base" sequence="10" name="Brochures" action="action_brochure_brochure"/>
 </odoo>

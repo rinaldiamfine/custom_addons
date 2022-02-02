@@ -19,24 +19,28 @@ class BuktiPenerimaan(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         list_data = []
         company_id = self.env.company
-        accounts = self.env['account.move'].browse(docids)
-        for account in accounts:
+        payments = self.env['account.payment'].browse(docids)
+        for payment in payments:
             data = {}
-            word = self.say_number(account.amount_total).capitalize()
+            word = self.say_number(payment.amount).capitalize()
+            detail_payment = ' '
+            account_ids = self.env['account.move'].search([('name', '=', payment.communication)])
+            for account in account_ids:
+                for line in account.invoice_line_ids:
+                    detail_payment += (line.name + ' ')
             data.update({
-                'name': account.name,
+                'name': payment.name,
                 'word_amount': word + ' rupiah',
+                'detail_payment': detail_payment
             })
             list_data.append(data)
             
         data.update({
-            'docs': accounts,
+            'docs': payments,
             'doc_ids': docids,
             'datas': list_data,
             'company_id': company_id,
         })
-        print(data, "GET DATA FINAL")
-        # print(flush=True)
         return data
 
     def say_number(self, i):

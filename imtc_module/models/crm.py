@@ -11,6 +11,23 @@ class CrmLead(models.Model):
     product_id = fields.Many2one('product.product', string="Training Program")
     class_id = fields.Many2one('student.class', string="Class")
 
+    def action_claim_crm(self):
+        for data in self:
+            data.user_id = self.env.user.id
+    
+    def view_document_files(self):
+        for data in self:
+            files = self.env['ir.attachment'].sudo().search([('res_id', '=', data.id), ('res_model', '=', 'crm.lead')])
+            return {
+                "type": "ir.actions.act_window",
+                "res_model": "ir.attachment",
+                "views": [[False, "kanban"], [False, "form"], [False, "tree"]],
+                "domain": [("id", "in", files.ids)],
+                "context": dict(self._context, create=False),
+                "name": "Attachment Files",
+            }
+
+
     def action_new_quotation(self):
         res = super(CrmLead, self).action_new_quotation()
         product_values = {

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_brochure_brochure_form_view" model="ir.ui.view">
+        <field name="name">Brochure</field>
+        <field name="model">brochure.brochure</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toogle_share" type="object" class="oe_stat_button" icon="fa-share">
+                            <div class="o_stat_info">
+                                <field name="is_share" class="o_stat_value"/>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <field name="active" invisible="1"/>
+                    </div>
+                    <group>
+                        <field name="is_share"/>
+                        <field name="file"/>
+                    </group>
+                    <separator string="Description"/>
+                    <field name="description"/>                   
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_brochure_brochure_tree_view" model="ir.ui.view">
+        <field name="name">Brochure</field>
+        <field name="model">brochure.brochure</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Name"/>
+                <field name="create_date" string="Date Created"/>
+                <field name="write_date" string="Date Edited"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_brochure_brochure_kanban_view" model="ir.ui.view">
+        <field name="name">Brochure</field>
+        <field name="model">brochure.brochure</field>
+        <field name="arch" type="xml">
+            <kanban edit="false" import="false">
+                <field name="id"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_area oe_kanban_global_click o_kanban_attachment">
+                            <div class="o_kanban_image">
+                                <div class="o_kanban_image_wrapper">
+                                    <img t-att-src="kanban_image('brochure.brochure', 'file', record.id.raw_value)" alt="" style="width:100px;"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_details">
+                                <div class="o_kanban_details_wrapper">
+                                    <div t-att-title="record.name.raw_value" class="o_kanban_record_title">
+                                        <field name="name" class="o_text_overflow"/>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <time class="oe_kanban_bottom_left">
+                                            <field name="create_date" widget="date"/>
+                                        </time>
+                                        <div class="oe_kanban_bottom_right">
+                                            <img t-att-src="kanban_image('res.users', 'image_128', record.create_uid.raw_value)" t-att-data-member_id="record.create_uid.raw_value" t-att-alt="record.create_uid.raw_value" class="oe_kanban_avatar"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <record id="action_brochure_brochure" model="ir.actions.act_window">
+        <field name="name">Brochure</field>
+        <field name="res_model">brochure.brochure</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('active','=',True),'|',('create_uid','=',uid),('is_share','=',True)]</field>
+    </record>
+    
+</odoo>

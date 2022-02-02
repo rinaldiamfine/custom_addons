@@ -6,14 +6,6 @@ from odoo.tools import email_split
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    def action_print_receipt(self):
-        print("GET PRINT RECEIPT")
-        # print(flush=True)
-
-    def action_print_payment(self):
-        print("GET PRINT PAYMENT")
-        # print(flush=True)
-
     @api.model
     def create(self, values):
         partner_obj = self.env['res.partner']

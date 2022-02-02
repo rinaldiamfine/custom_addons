@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-        <report id="report_account_move_bukti_pembayaran" model="account.move" string="Bukti Pembayaran" name="imtc_module.report_bukti_pembayaran" file="imtc_module.report_bukti_pembayaran" report_type="qweb-pdf"/>
+        <report 
+            id="report_account_move_bukti_pembayaran" 
+            model="account.payment" 
+            string="Bukti Pembayaran" 
+            name="imtc_module.report_bukti_pembayaran" 
+            file="imtc_module.report_bukti_pembayaran" 
+            report_type="qweb-pdf"
+            paperformat="imtc_module.paperformat_payment_imtc"
+        />
+
+        <report
+            id="account.action_report_payment_receipt"
+            model="account.payment"
+            string="Payment Receipt"
+            report_type="qweb-pdf"
+            name="account.report_payment_receipt"
+            file="account.report_payment_receipt"
+            menu="False"
+        />
 
         <template id="report_bukti_pembayaran">
             <t t-call="web.html_container">
@@ -10,7 +28,7 @@
                         <p style="page-break-after:always;"></p>
                         <style>
                             .font-small {
-                                font-size: 12px;
+                                font-size: 10px;
                             }
                             .table-header-side {
                                 width:20%;
@@ -28,7 +46,7 @@
                             }
                             .has-full-border-solid {
                                 border: 3px solid black;
-                                padding: 1rem;
+                                padding: 10px;
                             }
                             .has-border {
                                 border: 1px solid black;
@@ -48,8 +66,14 @@
                             }
                             .checkbox {
                                 border: 2px solid black;
-                                height: 25px;
-                                width: 25px;
+                                height: 10px;
+                                width: 10px;
+                            }
+                            .checkbox-full {
+                                border: 2px solid black;
+                                background: black;
+                                height: 10px;
+                                width: 10px;
                             }
                             .container-content {
                                 display: table;
@@ -78,7 +102,7 @@
                                 width:17.5%;
                             }
                             .empty-space {
-                                height: 100px;
+                                height: 30px;
                             }
                             .space-full {
                                 padding-left: 50px;
@@ -90,7 +114,7 @@
                             <table style="width:100%;">
                                 <tr>
                                     <td class="table-header-side" align="center">
-                                        <img t-attf-src="data:image/*;base64,{{company_id.logo}}" t-att-alt="company_id.name" style="width:70%;"/>
+                                        <img t-attf-src="data:image/*;base64,{{company_id.logo}}" t-att-alt="company_id.name" style="width:50%;"/>
                                     </td>
                                     <td class="table-header-center valign-top font-small">
                                         <strong>
@@ -112,38 +136,40 @@
                                     <td class="table-header-side">
                                     </td>
                                     <td class="table-header-center" align="center">
-                                        <h2><span class="has-border-solid">&#160;BUKTI PEMBAYARAN&#160;</span></h2>
+                                        <h4><span class="has-border-solid">&#160;BUKTI PEMBAYARAN&#160;</span></h4>
                                     </td>
                                     <td class="table-header-side font-small valign-middle container-content">
                                         <div class="row valign-middle">
                                             <div class="cell padding-5">
-                                                <div class="checkbox"/>
+                                                <t t-if="doc.journal_id.type == 'cash'">
+                                                    <div class="checkbox-full"/>
+                                                </t>
+                                                <t t-if="doc.journal_id.type != 'cash'">
+                                                    <div class="checkbox"/>
+                                                </t>
                                             </div>
                                             <div class="cell valign-middle">
-                                                <span class="font-bold">Kas</span>
+                                                <span class="font-bold">Tunai</span>
                                             </div>
                                         </div>
                                         <div class="row valign-middle">
                                             <div class="cell padding-5">
-                                                <div class="checkbox"/>
+                                                <t t-if="doc.journal_id.type == 'bank'">
+                                                    <div class="checkbox-full"/>
+                                                </t>
+                                                <t t-if="doc.journal_id.type != 'bank'">
+                                                    <div class="checkbox"/>
+                                                </t>
                                             </div>
                                             <div class="cell valign-middle">
                                                 <span class="font-bold">Bank</span>
-                                            </div>
-                                        </div>
-                                        <div class="row valign-middle">
-                                            <div class="cell padding-5">
-                                                <div class="checkbox"/>
-                                            </div>
-                                            <div class="cell valign-middle">
-                                                <span class="font-bold">Kontak</span>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="padding-5">
-                                        <strong class="font-small">Bayar Kepada: </strong>
+                                        <strong class="font-small">Bayar kepada: </strong>
                                         <span class="font-small has-border-dotted plpr-5" t-esc="doc.partner_id.name"/>
                                     </td>
                                     <td class="table-header-side valign-middle">
@@ -160,14 +186,16 @@
                                         <strong class="font-small">JUMLAH</strong>
                                     </td>
                                 </tr>
-                                <t t-set="deafult_col_table" t-value="7-int(len(doc.invoice_line_ids))"/>
-                                <tr t-foreach="doc.invoice_line_ids" t-as="line_id">
+                                <t t-set="deafult_col_table" t-value="3-int(len(detail_payment_ids))"/>
+                                <t t-set="totals" t-value="0"/>
+                                <tr t-foreach="detail_payment_ids" t-as="line_id">
                                     <td class="table-header-full table-border" align="left">
                                         <span class="font-small"><t t-esc="line_id.product_id.name"/></span>
                                     </td>
                                     <td class="table-header-side table-border" align="right">
                                         <span class="font-small" t-esc="company_id.currency_id.symbol"/>
-                                        <span class="font-small" t-esc="'%.2f'%line_id.price_subtotal"/>
+                                        <span class="font-small" t-esc="'%.f'%line_id.price_subtotal"/>
+                                        <t t-set="totals" t-value="totals+line_id.price_subtotal"/>
                                     </td>
                                 </tr>
                                 <tr t-foreach="range(deafult_col_table)" t-as="default">
@@ -185,7 +213,7 @@
                                     </td>
                                     <td class="table-header-side table-border" align="right">
                                         <strong class="font-small" t-esc="company_id.currency_id.symbol"/>
-                                        <strong class="font-small" t-esc="'%.2f'%doc.amount_total"/>
+                                        <strong class="font-small" t-esc="'%.f'%totals"/>
                                     </td>
                                 </tr>
                             </table>
@@ -211,7 +239,7 @@
                                         <span>&#160;</span>
                                     </td>
                                     <td class="table-header-side padding-5">
-                                        <span class="font-small">Batam, <span t-field="doc.invoice_date" t-field-options='{"format": "dd/MM/yyyy"}'/></span>
+                                        <span class="font-small">Batam, <span t-field="doc.payment_date" t-field-options='{"format": "dd/MM/yyyy"}'/></span>
                                     </td>
                                 </tr>
                                 <tr>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="ir.cron" id="cron_auto_schedule_class">
+    <field name="name">Student Class Schedule</field>
+    <field name="model_id" ref="imtc_module.model_student_class"/>
+    <field name="state">code</field>
+    <field name="code">model.auto_schedule_class()</field>
+    <field name="user_id" ref="base.user_root"/>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+  </record>
+</odoo>

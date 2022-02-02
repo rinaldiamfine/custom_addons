@@ -38,12 +38,20 @@ class ResPartner(models.Model):
             values['email'] = values['email'] if values.get('email') else values['email_from']
             values['phone'] = values['phone']
             values['education'] = values['education']
-
         else:
             active_id = context.get('active_id')
             crm_obj = self.env['crm.lead']
             crm_id = crm_obj.browse(active_id)
+            attachment_ids = self.env['ir.attachment'].sudo().search([('res_id', '=', crm_id.id), ('res_model', '=', 'crm.lead')])
             values['id_number'] = crm_id.id_number if crm_id else ""
             values['name'] = crm_id.contact_name
+            values['education'] = crm_id.education
+            values['email'] = crm_id.email_from
+            values['phone'] = crm_id.phone
+            values['street'] = crm_id.street
+            values['street2'] = crm_id.street2
+            values['city'] = crm_id.city
+            values['zip'] = crm_id.zip
+            values['student_attachment_ids'] = [(6, 0, attachment_ids.ids if attachment_ids else [])]
             # ... SKIP FOR NOW
         return values

@@ -32,6 +32,7 @@ class TraineeRegistration(http.Controller):
                 'street': info['street'] if info.get('street') else '',
                 'street2': info['street2'] if info.get('street2') else '',
                 'city': info['city'] if info.get('city') else '',
+                'user_id': False,
                 #CHANGE TO SELECTION
                 # 'state': info['state'] if info.get('state') else '',
             }
@@ -81,7 +82,6 @@ class TraineeRegistration(http.Controller):
 
     @http.route('/', http='http', auth='public', website=True)
     def homeView(self, **kw):
-        print("GET REGISTRATION")
         values = {}
         return request.render("imtc_module.portal_home_form_template", values)
 

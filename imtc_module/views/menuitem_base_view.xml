@@ -25,4 +25,8 @@
         groups="imtc_module.group_show_unused_menu"/>
     <menuitem id="account.menu_action_move_in_refund_type"
         groups="imtc_module.group_show_unused_menu"/>
+
+    
+    <menuitem id="contacts.menu_contacts"
+        groups="imtc_module.group_show_unused_menu"/>
 </odoo>

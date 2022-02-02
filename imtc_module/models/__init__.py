@@ -6,3 +6,4 @@ from . import res_partner
 from . import crm
 from . import account
 from . import product
+from . import brochure

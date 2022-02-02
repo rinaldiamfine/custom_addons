@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-        <report id="report_account_move_bukti_penerimaan" model="account.move" string="Bukti Penerimaan" name="imtc_module.report_bukti_penerimaan" file="imtc_module.report_bukti_penerimaan" report_type="qweb-pdf"/>
+        <report 
+            id="report_account_move_bukti_penerimaan" 
+            model="account.payment" 
+            string="Bukti Penerimaan" 
+            name="imtc_module.report_bukti_penerimaan" 
+            file="imtc_module.report_bukti_penerimaan" 
+            report_type="qweb-pdf"
+            paperformat="imtc_module.paperformat_receipt_imtc"
+        />
 
         <template id="report_bukti_penerimaan">
             <t t-call="web.html_container">
@@ -10,7 +18,7 @@
                         <p style="page-break-after:always;"></p>
                         <style>
                             .font-small {
-                                font-size: 12px;
+                                font-size: 10px;
                             }
                             .table-header-side {
                                 width:20%;
@@ -28,7 +36,7 @@
                             }
                             .has-full-border-solid {
                                 border: 3px solid black;
-                                padding: 1rem;
+                                padding: 10px;
                             }
                             .has-border {
                                 border: 1px solid black;
@@ -48,8 +56,14 @@
                             }
                             .checkbox {
                                 border: 2px solid black;
-                                height: 25px;
-                                width: 25px;
+                                height: 10px;
+                                width: 10px;
+                            }
+                            .checkbox-full {
+                                border: 2px solid black;
+                                background: black;
+                                height: 10px;
+                                width: 10px;
                             }
                             .container-content {
                                 display: table;
@@ -68,8 +82,8 @@
                                 padding:5px;
                             }
                             .plpr-5 {
-                                padding-left: 5px;
-                                padding-right: 5px;
+                                padding-left: 0px;
+                                padding-right: 0px;
                             }
                             .table-footer-space {
                                 width:10%;
@@ -78,7 +92,7 @@
                                 width:17.5%;
                             }
                             .empty-space {
-                                height: 100px;
+                                height: 30px;
                             }
                             .space-full {
                                 padding-left: 50px;
@@ -90,7 +104,7 @@
                             <table style="width:100%;">
                                 <tr>
                                     <td class="table-header-side" align="center">
-                                        <img t-attf-src="data:image/*;base64,{{company_id.logo}}" t-att-alt="company_id.name" style="width:70%;"/>
+                                        <img t-attf-src="data:image/*;base64,{{company_id.logo}}" t-att-alt="company_id.name" style="width:50%;"/>
                                     </td>
                                     <td class="table-header-center valign-top font-small">
                                         <strong>
@@ -112,91 +126,62 @@
                                     <td class="table-header-side">
                                     </td>
                                     <td class="table-header-center" align="center">
-                                        <h2><span class="has-border-solid">&#160;BUKTI PENERIMAAN&#160;</span></h2>
+                                        <h4><span class="has-border-solid">&#160;BUKTI PENERIMAAN&#160;</span></h4>
                                     </td>
                                     <td class="table-header-side font-small valign-middle container-content">
                                         <div class="row valign-middle">
                                             <div class="cell padding-5">
-                                                <div class="checkbox"/>
+                                                <t t-if="doc.journal_id.type == 'cash'">
+                                                    <div class="checkbox-full"/>
+                                                </t>
+                                                <t t-if="doc.journal_id.type != 'cash'">
+                                                    <div class="checkbox"/>
+                                                </t>
                                             </div>
                                             <div class="cell valign-middle">
-                                                <span class="font-bold">Kas</span>
+                                                <span class="font-bold">Tunai</span>
                                             </div>
                                         </div>
                                         <div class="row valign-middle">
                                             <div class="cell padding-5">
-                                                <div class="checkbox"/>
+                                                <t t-if="doc.journal_id.type == 'bank'">
+                                                    <div class="checkbox-full"/>
+                                                </t>
+                                                <t t-if="doc.journal_id.type != 'bank'">
+                                                    <div class="checkbox"/>
+                                                </t>
                                             </div>
                                             <div class="cell valign-middle">
                                                 <span class="font-bold">Bank</span>
                                             </div>
                                         </div>
-                                        <div class="row valign-middle">
-                                            <div class="cell padding-5">
-                                                <div class="checkbox"/>
-                                            </div>
-                                            <div class="cell valign-middle">
-                                                <span class="font-bold">Kontak</span>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="padding-5">
-                                        <strong class="font-small">Bayar Kepada: </strong>
+                                    <td colspan="3" class="padding-5">
+                                        <span>&#160;</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="padding-5">
+                                        <strong class="font-small">Diterima dari: </strong>
                                         <span class="font-small has-border-dotted plpr-5" t-esc="doc.partner_id.name"/>
                                     </td>
-                                    <td class="table-header-side valign-middle">
-                                    
-                                    </td>
                                 </tr>
-                            </table>
-                            <table style="width:100%;" class="table-border">
                                 <tr>
-                                    <td class="table-header-full table-border" align="center">
-                                        <strong class="font-small">PENJELASAN</strong>
-                                    </td>
-                                    <td class="table-header-side table-border" align="center">
-                                        <strong class="font-small">JUMLAH</strong>
+                                    <td colspan="3" class="padding-5">
+                                        <strong class="font-small">Untuk pembayaran: </strong>
+                                        <span class="font-small has-border-dotted plpr-5" t-esc="detail_payment"/>
                                     </td>
                                 </tr>
-                                <t t-set="deafult_col_table" t-value="7-int(len(doc.invoice_line_ids))"/>
-                                <tr t-foreach="doc.invoice_line_ids" t-as="line_id">
-                                    <td class="table-header-full table-border" align="left">
-                                        <span class="font-small"><t t-esc="line_id.product_id.name"/></span>
-                                    </td>
-                                    <td class="table-header-side table-border" align="right">
-                                        <span class="font-small" t-esc="company_id.currency_id.symbol"/>
-                                        <span class="font-small" t-esc="'%.2f'%line_id.price_subtotal"/>
-                                    </td>
-                                </tr>
-                                <tr t-foreach="range(deafult_col_table)" t-as="default">
-                                    <td class="table-header-full table-border">
-                                        <span>&#160;</span>
-                                    </td>
-                                    <td class="table-header-side table-border">
-                                        <span>&#160;</span>
-                                    </td>
-                                </tr>
-                                
                                 <tr>
-                                    <td class="table-header-full table-border" align="right">
-                                        <strong class="font-small">TOTAL</strong>
-                                    </td>
-                                    <td class="table-header-side table-border" align="right">
-                                        <strong class="font-small" t-esc="company_id.currency_id.symbol"/>
-                                        <strong class="font-small" t-esc="'%.2f'%doc.amount_total"/>
+                                    <td colspan="3" class="padding-5">
+                                        <strong class="font-small">Terbilang: </strong>
+                                        <span class="font-small has-border-dotted plpr-5" t-esc="word_amount"/>
                                     </td>
                                 </tr>
                             </table>
                             <table style="width:100%;">
-                                <tr>
-                                    <td colspan="5" class="padding-5">
-                                        <strong class="font-small">Terbilang: </strong>
-                                        <span class="font-small has-border-dotted plpr-5" t-esc="word_amount"/>
-                                        <br/>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td class="table-header-side padding-5">
                                         <span>&#160;</span>
@@ -211,7 +196,7 @@
                                         <span>&#160;</span>
                                     </td>
                                     <td class="table-header-side padding-5">
-                                        <span class="font-small">Batam, <span t-field="doc.invoice_date" t-field-options='{"format": "dd/MM/yyyy"}'/></span>
+                                        <span class="font-small">Batam, <span t-field="doc.payment_date" t-field-options='{"format": "dd/MM/yyyy"}'/></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -234,39 +219,7 @@
                             </table>
                             <table style="width:100%; border-collapse: collapse;">
                                 <tr>
-                                    <td class="table-footer padding-5 has-border" align="left">
-                                        <strong class="font-small">Di Periksa Oleh:</strong>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <strong class="font-small">Di Setujui Oleh:</strong>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <strong class="font-small">Di Bayar Oleh:</strong>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <strong class="font-small">Di Bukukan Oleh:</strong>
-                                    </td>
-                                    <td class="table-footer-space padding-5">
-                                        <span>&#160;</span>
-                                    </td>
-                                    <td class="table-header-side padding-5">
-                                        <span>&#160;</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-footer padding-5 has-border" align="left">
-                                        <div class="empty-space"/>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <div class="empty-space"/>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <div class="empty-space"/>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <div class="empty-space"/>
-                                    </td>
-                                    <td class="table-footer-space padding-5">
+                                    <td colspan="5">
                                         <span>&#160;</span>
                                     </td>
                                     <td class="table-header-side padding-5">
@@ -274,19 +227,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="table-footer padding-5 has-border" align="left">
-                                        <span class="font-small">Tgl: </span>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <span class="font-small">Tgl: </span>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <span class="font-small">Tgl: </span>
-                                    </td>
-                                    <td class="table-footer padding-5 has-border">
-                                        <span class="font-small">Tgl: </span>
-                                    </td>
-                                    <td class="table-footer-space padding-5">
+                                    <td colspan="5" align="left">
                                         <span>&#160;</span>
                                     </td>
                                     <td class="table-header-side padding-5" align="center">

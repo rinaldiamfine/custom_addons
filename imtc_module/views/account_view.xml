@@ -7,8 +7,6 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="action_print_receipt" type="object" string="Print Receipt"/>
-                <button name="action_print_payment" type="object" string="Print Payment"/>
             </xpath>
         </field>
     </record>
