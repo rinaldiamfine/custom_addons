@@ -23,10 +23,25 @@ class CrmLead(models.Model):
                 "res_model": "ir.attachment",
                 "views": [[False, "kanban"], [False, "form"], [False, "tree"]],
                 "domain": [("id", "in", files.ids)],
-                "context": dict(self._context, create=False),
+                # "context": dict(self._context, create=False),
+                "context": {'default_res_model': 'crm.lead', 'default_res_id': data.id, 'default_type': 'binary'},
                 "name": "Attachment Files",
             }
 
+    @api.onchange('class_id')
+    def onchange_class_id(self):
+        if self.class_id:
+            self.product_id = self.class_id.product_id.id if self.class_id.product_id else False
+
+    @api.model
+    def create(self, values):
+        if not values.get('name'):
+            values['name'] = "Training Registration"
+        if values.get('class_id'):
+            class_id = self.env['student.class'].browse(values['class_id'])
+            values['product_id'] = class_id.product_id.id if class_id.product_id else False
+        res = super(CrmLead, self).create(values)
+        return res
 
     def action_new_quotation(self):
         res = super(CrmLead, self).action_new_quotation()

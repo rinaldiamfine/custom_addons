@@ -100,4 +100,27 @@
             </xpath>
         </field>
     </record>
+
+    <record id="imtc_module_quick_create_opportunity_form" model="ir.ui.view">
+        <field name="name">imtc.module.crm.lead.form.quick_create.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="priority">1000</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            <form position="replace">
+                <group>
+                    <!-- <field name="name" string="Name"/> -->
+                    <field name="id_number" required="1"/>
+                    <field name="contact_name" required="1"/>
+                    <field name="class_id" required="1"/>
+
+                    <!-- <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_vat': True}"/>
+                    <field name="planned_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="priority" nolabel="1" widget="priority"/> -->
+                </group>
+            </form>
+        </field>
+    </record>
 </odoo>
