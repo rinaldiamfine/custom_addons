@@ -8,13 +8,14 @@
                 <header>
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
+                    <!-- <div class="oe_button_box" name="button_box">
                         <button name="toogle_share" type="object" class="oe_stat_button" icon="fa-share">
                             <div class="o_stat_info">
-                                <field name="is_share" class="o_stat_value"/>
+                                <field name="is_share" class="o_stat_value" invisible="1"/>
+                                <span class="o_stat_text">Share</span>
                             </div>
                         </button>
-                    </div>
+                    </div> -->
                     <div class="oe_title">
                         <h1>
                             <field name="name"/>
@@ -22,7 +23,8 @@
                         <field name="active" invisible="1"/>
                     </div>
                     <group>
-                        <field name="is_share"/>
+                        <field name="is_share" string="Share Brochure"/>
+                        <field name="create_uid" string="Created By"/>
                         <field name="file"/>
                     </group>
                     <separator string="Description"/>

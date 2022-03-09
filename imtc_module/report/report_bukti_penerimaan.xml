@@ -92,7 +92,7 @@
                                 width:17.5%;
                             }
                             .empty-space {
-                                height: 30px;
+                                height: 15px;
                             }
                             .space-full {
                                 padding-left: 50px;
