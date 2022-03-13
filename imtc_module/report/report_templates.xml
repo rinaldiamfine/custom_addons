@@ -10,7 +10,7 @@
 
         <template id="imtc_external_layout">
             <t t-if="not o" t-set="o" t-value="doc"/>
-            <div class="header">
+            <!-- <div class="header">
                 <div class="row">
                     <div class="col-3">
                         <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
             <t t-raw="0"/>
             </div>

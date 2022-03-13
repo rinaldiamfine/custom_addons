@@ -58,6 +58,10 @@
         'report/paper_format.xml',
         'report/report_bukti_pembayaran.xml',
         'report/report_bukti_penerimaan.xml',
+
+        'report/report_sale.xml',
+        'report/report_purchase.xml',
+        'report/report_invoice.xml',
         
         "security/ir.model.access.csv"
     ],
