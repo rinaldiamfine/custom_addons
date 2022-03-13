@@ -46,6 +46,15 @@
         'website/about_view.xml',
         'website/registration_view.xml',
 
+        'report/report_templates.xml',
+        'report/report_trial_balance.xml',
+        'report/report_partner_ledger.xml',
+        'report/report_general_ledger.xml',
+        'report/report_journal_audit.xml',
+        'report/report_financial.xml',
+        'report/report_aged_partner.xml',
+        'report/report_tax.xml',
+        
         'report/paper_format.xml',
         'report/report_bukti_pembayaran.xml',
         'report/report_bukti_penerimaan.xml',
